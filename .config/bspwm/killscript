@@ -1,0 +1,24 @@
+#!/bin/sh
+
+killall bash 
+killall sxhkd 
+killall picom 
+killall /usr/lib/geoclue-2.0/demos/agent  
+killall redshift 
+killall dunst
+killall unclutter 
+killall desknamer.sh 
+killall xss-lock 
+killall python 
+killall polkit-mate-authentication-agent-1 
+killall udiskie 
+killall xwinwrap 
+killall greenclip
+killall wallblur.sh
+killall autoadb
+#killall borders
+killall clight
+killall pidswallow
+killall flashfocus
+libinput-gestures-setup stop
+#killall tiramisu

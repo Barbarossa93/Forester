@@ -1,0 +1,37 @@
+auto-reload yes
+external-url-viewer "urlview"
+notify-always yes
+notify-program notify-send
+
+bind-key j down
+bind-key k up
+#bind-key j next articlelist
+bind-key j next articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+
+color listfocus black yellow standout bold
+color listfocus_unread yellow default bold
+color info red black bold
+color article cyan default
+
+#browser "firefox %u"
+browser linkhandler
+#macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
+#macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
+macro w set browser "w3m %u"; open-in-browser ; set browser "linkhandler %u"
+macro f set browser "firefox %u"; open-in-browser ; set browser "linkhandler %u"
+macro i set browser "feh --scale-down %u"; open-in-browser ; set browser "linkhandler %u"
+macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler

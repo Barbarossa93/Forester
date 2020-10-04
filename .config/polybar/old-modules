@@ -1,0 +1,121 @@
+
+
+[module/right]
+type = custom/text
+content-foreground = ${colors.shade0}
+content = "%{T4}%{T-}"
+
+[module/left]
+type = custom/text
+content-foreground = ${colors.shade0}
+content = "%{T4}%{T-}"
+
+[module/right1]
+type = custom/text
+content-background = ${colors.background}
+content-foreground = ${colors.shade0}
+content = "%{T4}%{T-}"
+
+[module/right2]
+type = custom/text
+content-background = ${colors.shade3}
+content-foreground = ${colors.shade2}
+content = "%{T4}%{T-}"
+
+[module/right3]
+type = custom/text
+content-background = ${colors.shade4}
+content-foreground = ${colors.shade3}
+content = "%{T4}%{T-}"
+
+[module/right4]
+type = custom/text
+;content-background = ${colors.shade5}
+content-foreground = ${colors.shade4}
+content = "%{T4}%{T-}"
+
+[module/right5]
+type = custom/text
+content-background = ${colors.shade6}
+content-foreground = ${colors.shade5}
+content = "%{T4}%{T-}"
+
+[module/right6]
+type = custom/text
+;content-background = ${colors.shade7}
+content-foreground = ${colors.shade6}
+content = "%{T4}%{T-}"
+
+[module/rightend]
+type = custom/text
+content-foreground = ${colors.shade4}
+content = "%{T4}%{T-}"
+
+[module/left1]
+type = custom/text
+content-background = ${colors.shade1}
+content-foreground = ${colors.shade0}
+content = "%{T4}%{T-}"
+
+[module/left2]
+type = custom/text
+content-background = ${colors.shade3}
+content-foreground = ${colors.shade2}
+content = "%{T4}%{T-}"
+
+[module/left3]
+type = custom/text
+content-background = ${colors.shade4}
+content-foreground = ${colors.shade3}
+content = "%{T4}%{T-}"
+
+[module/left4]
+type = custom/text
+;content-background = 
+content-foreground = ${colors.shade4}
+content = "%{T4}%{T-}"
+
+[module/leftend]
+type = custom/text
+content-foreground = ${colors.shade4}
+content = "%{T4}%{T-}"
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.shade1}
+label-focused-foreground = ${colors.shade6}
+;label-focused-underline= ${colors.secondary}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 1
+label-unfocused-background = ${colors.shade1}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+;label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+; Separator in between workspaces
+; label-separator = |
+

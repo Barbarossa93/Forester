@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+jqscript=".emoticons[] \
+          | select(.string != null) \
+          | [.string, (.tags | join(\", \"))] \
+          | @tsv"
+jq --raw-output "${jqscript}" "${1}" | sed 's|\\\\|\\|' | sed 's|\\"|"|'

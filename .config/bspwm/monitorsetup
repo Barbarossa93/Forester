@@ -1,0 +1,27 @@
+#!/bin/sh
+
+intern=eDP1
+extern=VIRTUAL1
+
+#if xrandr | grep "$extern disconnected"; then
+if pidof intel-virtual-output; then
+    xrandr --output "$extern" --off --output "$intern" --auto
+    pkill intel-virtual-o
+    bspc monitor "$extern" --remove
+fi    
+    #bspc monitor eDP1 -d          
+    #bspc monitor eDP1 -d             
+    bspc monitor "$intern" -d          
+    ~/.config/polybar/launch.sh
+
+#else
+#    intel-virtual-output;
+#    xrandr --output "$intern" --primary --auto --rotate normal --output "$extern" --auto --rotate normal --right-of "$intern"
+#    #bspc monitor eDP1 -d     
+#    #bspc monitor HDMI-1-1 -d     
+#    #bspc monitor eDP1 -d     
+#    #bspc monitor HDMI-1-1 -d     
+#    bspc monitor "$intern" -d          
+#    bspc monitor "$extern" -d          
+#fi
+

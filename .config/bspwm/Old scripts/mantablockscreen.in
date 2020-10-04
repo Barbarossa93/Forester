@@ -1,0 +1,217 @@
+#!/bin/env bash
+
+pkill -f cmatrixterm
+sleep 0.1
+wallpaper=$2
+cachepath=$HOME/.cache/mantablockscreen
+cropuser=$cachepath/$USER-pic-crop.png
+fullname=`getent passwd $USER | cut -d ":" -f 5 | cut -d "," -f 1`
+full_alias="${fullname} (${USER})"
+if [[ -n $fullname ]]; then
+	full_alias="${fullname} (${USER})"
+else
+	full_alias=$USER
+fi
+
+width=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 1 |head -n1)
+height=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 2 |head -n1)
+half_width=$((width/2))
+half_height=$((height/2))
+
+ewidth=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 1 |awk 'NR==2')
+eheight=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 2 |awk 'NR==2')
+ehalf_width=$((ewidth/2))
+ehalf_height=$((eheight/2))
+
+extern=HDMI-1-1
+
+fg_color=fefefeff
+wrong_color=f82a11aa
+highlight_color=39393999
+verif_color=fefefe66
+
+cropuser() {
+	if [[ ! -d $HOME/.cache/mantablockscreen ]]; then
+		mkdir $HOME/.cache/mantablockscreen
+	fi
+	ava_home=$HOME/.face
+	ava_var=/var/lib/AccountsService/icons/$USER
+	userpic=@pkgdatadir@/userpic.png
+	if [[ -e $ava_home ]]; then
+		userpic=$ava_home
+	elif [[ -e $ava_var ]]; then
+		userpic=$ava_var
+	fi
+	echo "Caching image..."
+	convert $userpic -resize 40x40 -gravity Center \( \
+		-size 40x40 xc:Black \
+		-fill White \
+		-draw "circle 20 20 20 1" \
+		-alpha Copy\
+		\) -compose CopyOpacity -composite -trim $cropuser
+	echo "Finished caching user image"
+}
+
+	logical_px() {
+	# get dpi value from xrdb
+	local DPI
+	DPI=$(cat ~/.Xresources | grep -oP 'Xft.dpi:\s*\K\d+' | bc)
+	if [ -z "$DPI" ]; then
+		DPI=$(xdpyinfo | sed -En "s/\s*resolution:\s*([0-9]*)x([0-9]*)\s.*/\\$2/p" | head -n1)
+	fi
+
+	# return the default value if no DPI is set
+	if [ -z "$DPI" ]; then
+		echo "$1"
+	else
+		local SCALE
+		SCALE=$(echo "scale=2; $DPI / 96.0" | bc)
+
+		# check if scaling the value is worthy
+		if [ "$(echo "$SCALE > 1.25" | bc -l)" -eq 0 ]; then
+			echo "$1"
+		else
+			echo "$SCALE * $1 / 1" | bc
+		fi
+	fi
+}
+
+scrotblurbg() {
+	maim ~/.cache/mantablockscreen/cache.png
+	convert -scale 10% -scale 1000% "$cachepath/cache.png" "$cachepath/cache-blur.png"
+	#convert -scale 25% -blur 0x0.75 -resize 400% "$cachepath/cache.png" "$cachepath/cache-blur.png"
+}
+
+scrotgenbg() {
+	scrotblurbg
+	#composite -geometry "+$((half_width-60))+$((half_height-40))" $cropuser $cachepath/cache-blur.png $cachepath/resize-pic-sc-blur.png
+	
+	rectangles=" "
+	SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+	for RES in $SR; do
+		SRA=(${RES//[x+]/ })
+		CX=$((SRA[2] + $(logical_px 25 1)))
+		CY=$((SRA[1] - $(logical_px 30 2)))
+		rectangles+="rectangle $CX,$CY $((CX+$(logical_px 300 1))),$((CY-$(logical_px 80 2))) "
+	done
+
+	convert $cachepath/cache-blur.png -draw "fill #1c1c1c99 $rectangles" $cachepath/l_blur.png
+	
+	composite -geometry "+260+$((height-90))" $cropuser $cachepath/l_blur.png $cachepath/resize-pic-sc-blur.png
+}
+
+exscrotgenbg() {
+	scrotblurbg
+	#composite -geometry "+$((half_width-60))+$((half_height-40))" $cropuser $cachepath/cache-blur.png $cachepath/resize-pic-sc-blur.png
+	#composite -geometry "+$((ehalf_width-60+width))+$((ehalf_height-40))" $cropuser $cachepath/resize-pic-sc-blur.png $cachepath/resize-pic-sc-blur2.png
+
+	rectangles=" "
+	SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+	for RES in $SR; do
+		SRA=(${RES//[x+]/ })
+		CX=$((SRA[2] + $(logical_px 25 1)))
+		CY=$((SRA[1] - $(logical_px 30 2)))
+		rectangles+="rectangle $CX,$CY $((CX+$(logical_px 300 1))),$((CY-$(logical_px 80 2))) "
+	done
+
+	convert $cachepath/cache-blur.png -draw "fill #1c1c1c99 $rectangles" $cachepath/l_blur2.png	
+		
+	composite -geometry "+260+$((height-90))" $cropuser $cachepath/l_blur2.png $cachepath/resize-pic-sc-blur.png
+	composite -geometry "+$((width+260))+$((eheight-90))" $cropuser $cachepath/resize-pic-sc-blur.png $cachepath/resize-pic-sc-blur2.png
+
+}
+
+lock() {
+	if xrandr | grep "$extern connected"; then
+		exscrotgenbg
+		date_now=$(date +'%b, %d')
+	
+		playerctl pause
+		#dunstctl set-paused true
+		i3lock -n \
+		-t -i $cachepath/resize-pic-sc-blur2.png \
+		--timepos='x+110:h-70' \
+		--datepos='x+43:h-45' \
+		--clock --date-align 1 --datestr "$USER" --timestr="%I:%M %p" \
+		--insidecolor=1c1c1c00 --ringcolor=90a57dff --line-uses-inside \
+		--keyhlcolor=d0d0d0ff --bshlcolor=$highlight_color --separatorcolor=00000000 \
+		--insidevercolor=1c1c1c66 --insidewrongcolor=$wrong_color \
+		--ringvercolor=d0d0d0ff --ringwrongcolor=$wrong_color --indpos='x+280:h-70' \
+		--radius=20 --ring-width=2 --veriftext='' --wrongtext='' \
+		--verifcolor=90a57dff --timecolor=90a57dff --datecolor=90a57dff \
+		--time-font="Misc Tamsyn" --date-font="Misc Tamsyn" --layout-font="Misc Tamsyn" --verif-font="Misc Tamsyn" --wrong-font="Misc Tamsyn" \
+		--noinputtext='' --force-clock --pass-media-keys --indicator
+
+		playerctl play
+		#dunstctl set-paused false
+
+		#i3lock -n --pass-media-keys --pass-screen-keys --force-clock -i $cachepath/resize-pic-sc-blur2.png \
+		#--indpos="w/2+x:h/2+20" --timepos="w/2+x:h/2-80" --datepos="w/2+x:h/2-55" --greeterpos="w/2+x:h/2+110"\
+		#--insidevercolor=23232666 --insidewrongcolor=$wrong_color --insidecolor=23232600 \
+		#--ringvercolor=e0e0e4ff --ringwrongcolor=$wrong_color --ringcolor=9ba997ff \
+		#--keyhlcolor=e0e0e4ff --bshlcolor=$highlight_color --separatorcolor=00000000 \
+		#--datecolor=9ba997ff --timecolor=9ba997ff --greetercolor=9ba997ff \
+		#--timestr="%I:%M %p" --timesize=25 \
+		#--datestr="%A %B %d %Y" --datesize=12 \
+		#--line-uses-inside --radius 60 --ring-width 2 --indicator \
+		#--verifcolor=9ba997ff --verifsize=10 --wrongcolor=9ba997ff --wrongsize=8 --greetersize=15 \
+		#--veriftext="Compiling..."  --wrongtext="Error!" --noinputtext="" --greetertext=""$USER"" \
+		#--clock --time-font=berry --date-font=berry --verif-font=berry --wrong-font=berry --greeter-font=berry
+	else
+		scrotgenbg
+		date_now=$(date +'%b, %d')
+		
+		playerctl pause
+		#dunstctl set-paused true
+		i3lock -n \
+		-t -i $cachepath/resize-pic-sc-blur.png \
+		--timepos='x+110:h-70' \
+		--datepos='x+43:h-45' \
+		--clock --date-align 1 --datestr "$USER" --timestr="%I:%M %p" \
+		--insidecolor=1c1c1c00 --ringcolor=90a57dff --line-uses-inside \
+		--keyhlcolor=d0d0d0ff --bshlcolor=$highlight_color --separatorcolor=00000000 \
+		--insidevercolor=1c1c1c66 --insidewrongcolor=$wrong_color \
+		--ringvercolor=d0d0d0ff --ringwrongcolor=$wrong_color --indpos='x+280:h-70' \
+		--radius=20 --ring-width=2 --veriftext='' --wrongtext='' \
+		--verifcolor=90a57dff --timecolor=90a57dff --datecolor=90a57dff \
+		--time-font="Misc Tamsyn" --date-font="Misc Tamsyn" --layout-font="Misc Tamsyn" --verif-font="Misc Tamsyn" --wrong-font="Misc Tamsyn" \
+		--noinputtext='' --force-clock --pass-media-keys --indicator
+		
+		playerctl play
+		#dunstctl set-paused false
+		
+		#i3lock -n --pass-media-keys --pass-screen-keys --force-clock -i $cachepath/resize-pic-sc-blur.png \
+		#--indpos="w/2+x:h/2+20" --timepos="w/2+x:h/2-80" --datepos="w/2+x:h/2-55" --greeterpos="w/2+x:h/2+110"\
+		#--insidevercolor=23232666 --insidewrongcolor=$wrong_color --insidecolor=23232600 \
+		#--ringvercolor=e0e0e4ff --ringwrongcolor=$wrong_color --ringcolor=9ba997ff \
+		#--keyhlcolor=e0e0e4ff --bshlcolor=$highlight_color --separatorcolor=00000000 \
+		#--datecolor=9ba997ff --timecolor=9ba997ff --greetercolor=9ba997ff \
+		#--timestr="%I:%M %p" --timesize=16 \
+		#--datestr="%A %B %d %Y" --datesize=12 \
+		#--line-uses-inside --radius 60 --ring-width 2 --indicator \
+		#--verifcolor=9ba997ff --verifsize=10 --wrongcolor=9ba997ff --wrongsize=8 --greetersize=15 \
+		#--veriftext="Compiling..."  --wrongtext="Error!" --noinputtext="" --greetertext=""$USER"" \
+		#--clock --time-font=berry --date-font=berry --verif-font=berry --wrong-font=berry --greeter-font=berry
+	fi		
+}
+
+show_help(){
+	cat <<-EOF
+	Usage :
+	 mantablockscreen [OPTION]
+
+	Avaible options:
+	 -i, --image             Generate cache image
+	 -h, --help              Show this help
+
+	EOF
+}
+
+case $1 in
+	-i|--image)
+		cropuser ;;
+	-h|--help)
+		show_help ;;
+	*)
+		lock ;;
+esac

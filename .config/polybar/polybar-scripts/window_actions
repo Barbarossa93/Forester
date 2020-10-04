@@ -1,0 +1,35 @@
+#!/bin/sh
+
+active_window=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print "0x0"substr($5,3)}')
+hidden_windows=$(bspc query -N -d -n .hidden | awk '{print tolower($0)}' | grep "$2")
+size=32
+
+
+case "$1" in
+hide)
+	setsid -f termite --name "notifHistory" -e "nvim \"+ normal G $\" ~/.history"
+	#bspc node "$active_window" -g hidden
+	;;
+close)
+	bspc node -k
+	;;
+slop_resize)
+	bspc node -c
+	#~/.config/sxhkd/rofi-bsphidwins
+	#wmctrl -ia "$active_window"
+	#wmctrl -ir "$active_window" -e "$(slop -f 0,%x,%y,%w,%h)"
+	;;
+increment_size)
+	bspc node -z left -$size 0; \
+	bspc node -z bottom 0 $size; \
+	bspc node -z top 0 -$size; \
+	bspc node -z right $size 0
+	;;
+decrement_size)
+	bspc node -z right -$size 0; \
+	bspc node -z top 0 $size; \
+	bspc node -z bottom 0 -$size; \
+	bspc node -z left $size 0
+	;;
+esac
+

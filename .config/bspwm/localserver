@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/.mozilla/firefox/j7zjgx6b.default-release/startpage
+python -m http.server 1337 &

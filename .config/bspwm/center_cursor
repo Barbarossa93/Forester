@@ -1,0 +1,21 @@
+#!/bin/sh
+
+setterm --blank 1
+setterm --powerdown 2
+width=$(tput cols)
+height=$(tput lines)
+user=$(echo "$USER"  | sed 's/.*/\u&/')
+clear
+tput cup $(((height / 2) - 6)) $(((width / 2) - 10)) 
+echo "┌──────────────────┐"
+tput cup $(((height / 2) - 5)) $(((width / 2) - 10)) 
+echo "│                  │"
+tput cup $(((height / 2) - 4)) $(((width / 2) - 10))
+echo "│    $user    │"
+tput cup $(((height / 2) - 3)) $(((width / 2) - 10))
+echo "│                  │"
+tput cup $(((height / 2) - 2)) $(((width / 2) - 10))
+echo "│                  │"
+tput cup $(((height / 2) - 1)) $(((width / 2) - 10))
+echo "└──────────────────┘"
+tput cup $(((height / 2) - 3)) $(((width / 2) - 5))

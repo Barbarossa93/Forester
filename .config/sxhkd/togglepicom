@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if pidof picom;
+then
+	killall picom;
+	notify-send -u normal -t 3000 "Picom killed"	
+	#dunstify -u normal -r 609 -t 3000 "Picom killed"
+else
+	picom --config ~/.config/bspwm/phicom.conf &
+	notify-send -u normal -t 3000 "Picom Started"
+	#dunstify -u normal -r 609 -t 3000 "Picom Started"
+fi

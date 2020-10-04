@@ -1,0 +1,28 @@
+#!/bin/sh
+
+intern=eDP1
+extern=HDMI-1-1
+
+iwidth=$(xrandr --query | grep "$intern connected" | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 1)
+iheight=$(xrandr --query | grep "$intern connected" | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 2)
+#ihalf_width_corrected=$((iwidth/2-100))
+#ihalf_height_corrected=$((iheight/2-100))
+
+ewidth=$(xrandr --query | grep "$extern connected" | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 1)
+eheight=$(xrandr --query | grep "$extern connected" | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 2)
+#ehalf_width_corrected=$((ewidth/2-100))
+#ehalf_height_corrected=$((eheight/2-100))
+
+#fin_ewidth=$((iwidth+ehalf_width_corrected))
+#fin_eheight=$((iheight+ehalf_height_corrected))
+
+if xrandr | grep "$extern connected"; then
+	gifsicle --resize "$iwidth"x"$iheight" ~/.config/bspwm/treefall.gif > ~/.config/bspwm/itreefall.gif
+	gifsicle --resize "$ewidth"x"$eheight" ~/.config/bspwm/treefall.gif > ~/.config/bspwm/etreefall.gif	
+	
+	xwinwrap -g "$iwidth"x"$iheight" -fdt -d -- gifview -w WID ~/.config/bspwm/itreefall.gif -a
+	xwinwrap -g "$ewidth"x"$eheight"+"$iwidth" -fdt -d -- gifview -w WID ~/.config/bspwm/etreefall.gif -a
+	else
+	gifsicle --resize "$iwidth"x"$iheight" ~/.config/bspwm/treefall.gif > ~/.config/bspwm/itreefall.gif
+	xwinwrap -g "$iwidth"x"$iheight" -fdt -d -- gifview -w WID ~/.config/bspwm/itreefall.gif -a
+fi	

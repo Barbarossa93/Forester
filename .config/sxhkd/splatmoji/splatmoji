@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'  --color fg:7,bg:-1,hl:6,fg+:6,bg+:-1,hl+:6 --color info:2,prompt:1,spinner:5,pointer:5,marker:3,header:8'
+
+shopt -s nullglob
+set -e
+set -o pipefail
+
+readonly PROGNAME="$(basename "${0}")"
+readonly PROGDIR="$( cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )"
+
+# shellcheck disable=SC1090
+# shellcheck disable=SC1091
+if [ -s "${PROGDIR}/lib/functions" ]; then
+  source "${PROGDIR}/lib/functions"
+else
+  source '/usr/lib/splatmoji/functions'
+fi
+
+main() {
+  parse_args "$@" || \
+    if [[ $? -eq 255 ]]; then
+      # Printing help and listing langs both return 255 as a signal to exit
+      # here with success
+      exit 0
+    else
+      exit 1
+    fi
+
+  # Get configuation
+  local conffile
+  conffile="$(get_config_file)"
+  declare -A config
+  get_config "${conffile}" config
+
+  # Get list of data files
+  # shellcheck disable=SC2034
+  local datafiles_list=()
+  collect_data_files "${DISABLE_EMOJI_DB}" "${DISABLE_EMOTICON_DB}" LANGUAGES CLI_DATA_FILES datafiles_list
+
+  # User selection
+  local selection
+  selection="$(get_user_selection SKIN_TONES_EXCLUDE datafiles_list "${config['rofi_command']}")"
+  # Remove prepended unicode left-to-right mark if present
+  selection=${selection#$'\u200e'}
+  if [ -n "${ESCAPE}" ]; then
+    selection=$(escape_selection "${selection}" "${ESCAPE}")
+  fi
+
+  if [ "${SUBCOMMAND}" == 'type' ]; then
+    output_typed "${config[xdotool_command]}" "${selection}"
+  else
+    output_copied "${config[xsel_command]}" "${selection}"
+  fi
+}
+
+main "$@"

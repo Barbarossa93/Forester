@@ -1,0 +1,576 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0}
+background = #00232326
+back = #e6232326
+;back = #232326
+;background-alt = $(xrdb:color0)
+foreground = ${xrdb:foreground}
+;foreground = #dfdfdf
+foreground-alt = ${xrdb:color8}
+primary = ${xrdb:color6}
+secondary = ${xrdb:color5}
+alert = ${xrdb:color8}
+
+; Active Shade 
+;shade0 = ${xrdb:color0}
+shade0 = #00232326
+shade1 = ${xrdb:color1}
+shade2 = ${xrdb:color2}
+shade3 = ${xrdb:color3}
+shade4 = ${xrdb:color4}
+shade5 = ${xrdb:color5}
+shade6 = ${xrdb:color6}
+shade7 = ${xrdb:color7}
+shade8 = ${xrdb:color8}
+
+[bar/example]
+monitor = eDP1
+width = 70%:-10
+height = 24
+offset-x = 15%:+3
+offset-y = 11
+;radius = 6.0
+fixed-center = true
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = ${colors.shade6}
+
+border-size = 1
+border-color = ${colors.shade1}
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = berry:style=Sans:size=9;2
+font-1 = waffle:style=Regular:size=9;2
+font-2 = Cozette:style=Medium:size=9;2
+;font-0 = Iosevka:antialias=true:style=Regular:size=10;3
+;font-1 = Font Awesome 5 Free Solid:antialias=true:style=Solid:size=10;2
+;font-3 = Font Awesome 5 Brands Regular:antialias=true:style=Regular:size=10;2
+font-3 = FiraCode Nerd Font Mono:antialias=true:style=regular:size=13;3
+font-4 = Symbola:size=9;2
+
+dpi = 0
+
+modules-left = bspmode bspwm
+modules-center = notifsAndWindowTitle updates-arch-combined
+modules-right = pulseaudio sep backlight sep wlan eth sep battery sep time
+
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.background}
+tray-transparency = false
+
+wm-restack = bspwm
+
+override-redirect = true
+
+;scroll-up = bspc desktop -f prev
+;scroll-down = bspc desktop -f next
+
+cursor-click = pointer
+;cursor-scroll = pointer
+
+enable-ipc = true
+pseudo-transparency = false
+
+[bar/example1]
+monitor = HDMI-1-1
+width = 70%:-10
+height = 24
+offset-x = 15%:+3
+offset-y = 11
+;radius = 5.0
+fixed-center = true
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+;line-color = #f00
+
+border-size = 1
+border-color = ${colors.shade1}
+
+padding = 1
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = berry:style=Sans:size=9;3
+font-1 = waffle:style=Regular:size=12;2
+font-2 = Cozette:style=Medium:size=12;2
+#font-0 = Iosevka:antialias=true:style=Regular:size=10;3
+#font-1 = Font Awesome 5 Free Solid:antialias=true:style=Solid:size=10;2
+;font-3 = Font Awesome 5 Brands Regular:antialias=true:style=Regular:size=10;2
+font-3 = FiraCode Nerd Font Mono:antialias=true:style=regular:size=13;3
+font-4 = Symbola:size=9;2
+
+dpi = 0
+
+modules-left = bspmode bspwm
+modules-center = notifsAndWindowTitle updates-arch-combined
+modules-right = pulseaudio sep bluetooth sep wlan eth sep battery sep time
+
+tray-position = none
+tray-padding = 2
+tray-background = ${colors.shade1}
+tray-transparency = false
+
+wm-restack = bspwm
+
+override-redirect = true
+
+;scroll-up = bspc desktop -f prev
+;scroll-down = bspc desktop -f next
+
+cursor-click = pointer
+;cursor-scroll = pointer
+
+enable-ipc = true
+pseudo-transparency = false
+
+[bar/background]
+monitor = eDP1
+width = 70%:-3
+height = 32
+offset-x = 15%
+offset-y = 8
+bottom = false
+
+modules-center = void
+background = ${colors.back}
+
+wm-restack = bspwm
+override-redirect = true
+
+[bar/ext-background]
+monitor = HDMI-1-1
+width = 70%:-3
+height = 32
+offset-x = 15%
+offset-y = 8
+bottom = false
+
+modules-center = void
+background = ${colors.back}
+
+wm-restack = bspwm
+override-redirect = true
+
+[module/void]
+type = custom/text
+content-foreground = ${colors.shade7}
+content-background = ${colors.shade0}
+content = " "
+
+[module/notifsAndWindowTitle]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/polybar-notification.sh
+format = <label>
+label = %{A1:./.config/polybar/polybar-scripts/window_actions hide:}%{A2:./.config/polybar/polybar-scripts/window_actions close:}%{A3:./.config/polybar/polybar-scripts/window_actions slop_resize:}%{A4:./.config/polybar/polybar-scripts/window_actions increment_size:}%{A5:./.config/polybar/polybar-scripts/window_actions decrement_size:}%output%%{A}%{A}%{A}%{A}%{A}
+label-padding = 1
+tail = true
+
+[module/windowscroll]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/zscroll.sh
+tail = true
+format = <label>
+label = %{A1:./.config/polybar/polybar-scripts/window_actions hide:}%{A2:./.config/polybar/polybar-scripts/window_actions close:}%{A3:./.config/polybar/polybar-scripts/window_actions slop_resize:}%{A4:./.config/polybar/polybar-scripts/window_actions increment_size:}%{A5:./.config/polybar/polybar-scripts/window_actions decrement_size:}%output%%{A}%{A}%{A}%{A}%{A}
+;format-prefix = " "
+;format-prefix-foreground = ${colors.shade4}
+;format-prefix = " "
+format-padding = 1
+format-background = ${colors.shade0}
+
+[module/player-mpris-simple]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/player-mpris-simple.sh
+label-maxlen = 35
+interval = 3
+;format-prefix = " "
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/updates-arch-combined.sh
+interval = 600
+format-background = ${colors.shade0}
+format-prefix = "|  "
+format-prefix-foreground = ${colors.shade4}
+format-padding = 1
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/.config/polybar/polybar-scripts/system-bluetooth-bluetoothctl.sh --toggle &
+format-background = ${colors.shade0}
+format-padding = 1
+
+[module/sep]
+type = custom/text
+content-foreground = ${colors.shade7}
+content-background = ${colors.shade0}
+content = "|"
+
+[module/xwindow]
+type = internal/xwindow
+label = 
+
+format = <label>
+format-prefix = " "
+;format-prefix = " "
+format-padding = 1
+format-background = ${colors.shade0}
+
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Desktop
+;label-empty-background = ${colors.background-alt}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+
+label-mounted = %{A1:bleachbit:}%percentage_used%%%{A}
+label-unmounted = %mountpoint% not mounted
+#label-unmounted-foreground = ${colors.foreground-alt}
+format-mounted-background = ${colors.shade2}
+format-mounted-padding = 2
+format-mounted-prefix = " "
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state>
+pin-workspaces = true
+enable-scroll = false
+;label-separator = |
+
+label-focused = %name%
+label-focused-padding = 1
+label-focused-foreground = ${colors.shade6}
+label-focused-background = ${colors.shade0}
+;label-focused-underline = ${colors.shade6}
+;label-focused-overline = ${colors.shade6}
+
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-background = ${colors.shade0}
+
+label-urgent = %name%
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-padding = 1
+label-empty-background = ${colors.shade0}
+
+[module/bspmode]
+type = internal/bspwm
+
+format = <label-mode>
+pin-workspace = false
+enable-scroll = false
+inline-mode = false
+
+format-suffix = %{Fcolors.shade7}|%{F-}
+format-background = ${colors.shade0}
+format-foreground = ${colors.shade2}
+;format-padding = 1
+
+; The following labels will be used to indicate the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+label-monocle = 
+label-monocle-padding = 1
+label-tiled = 
+label-tiled-padding = 1
+label-fullscreen = 
+label-fullscreen-padding = 1
+label-floating = 
+label-floating-padding = 1
+label-pseudotiled = 
+label-pseudotiled-padding = 1
+label-locked = 
+label-locked-padding = 1
+label-sticky = 
+label-sticky-padding = 1
+label-private = 
+label-private-padding = 1
+label-marked = 
+label-marked-padding = 1
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+format = <ramp> <label>
+format-background = ${colors.shade0}
+format-padding = 1
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+;ramp-4 = 🌑
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-background = ${colors.shade3}
+format-padding = 2
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${xrdb:color1}
+label = %{A1:urxvt -e htop:}%percentage%%%{A}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "%{T2} %{T-}"
+format-background = ${colors.shade4}
+format-padding = 1
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${xrdb:color6}
+label = %{A1:urxvt -e htop:}%percentage_used%%%{A}
+
+[module/wlan]
+type = internal/network
+interface = wlp8s0
+interval = 3.0
+
+format-connected-background = ${colors.shade0}
+format-connected = <ramp-signal> <label-connected>
+format-connected-padding = 1
+;format-connected-underline = ${xrdb:color5}
+label-connected = %{A1:urxvt -e nmtui:}%{A3:/home/barbarossa/.config/polybar/polybar-scripts/togglewifi.sh:}%signal%%%{A}%{A}
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.shade0}
+format-disconnected-padding = 1
+label-disconnected = %{A1:setsid -f urxvt -e nmtui:}%{A3:/home/barbarossa/.config/polybar/polybar-scripts/togglewifi.sh:}%{F#6e6e72}%{F-} Disconnected%{A}%{A}
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
+ramp-signal-foreground = ${colors.shade5}
+
+[module/eth]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+;format-connected-underline = ${xrdb:color2}
+format-connected-prefix = " "
+format-connected-background = ${colors.shade0}
+format-connected-padding = 1
+;format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = %a %m/%d
+;date-alt = " %Y-%m-%d"
+
+format = <label>
+format-padding = 1
+;format-background = ${colors.shade6}
+
+format-prefix = " " 
+format-prefix-foregro1und = ${colors.foreground-alt}
+format-background = ${colors.shade0}
+;format-underline = #0a6cf5
+
+label = %date%
+
+[module/time]
+type = internal/date
+interval = 5
+time = "%I:%M %p"
+;time-alt = "%A, %B %d %Y"
+format = <label>
+format-background = ${colors.shade0}
+format-prefix = " "
+format-prefix-foreground = ${colors.shade3}
+;format-prefix = " "
+format-padding = 1
+label = %{A1:notify-send -u normal -t 3000 " $(date "+%A, %B %d %Y")":}%time%%{A}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${colors.shade0}
+format-volume-padding = 1
+label-volume = %percentage%%
+label-volume-foreground = ${colors.shade7}
+
+label-muted = 
+;label-muted = 
+label-muted-background = ${colors.shade0}
+label-muted-foreground = ${colors.shade8}
+label-muted-padding = 1
+
+click-right = urxvt -e pulsemixer
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-foreground = #ad7dad
+
+; Only applies if <ramp-volume> is used
+;ramp-volume-0 = 
+;ramp-volume-1 = 
+;ramp-volume-2 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+
+label-full = %{A1:powertime:}%percentage%%%{A}
+label-charging = %{A1:powertime:}%percentage%%%{A}
+label-discharging = %{A1:powertime:}%percentage%%%{A}
+
+format-charging = <label-charging>
+format-charging-background = ${colors.shade0}
+format-charging-prefix = " "
+format-charging-prefix-foreground = #bbcab7
+;format-charging-prefix = " "
+format-charging-padding = 1
+;format-charging-underline = ${xrdb:color5}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-background = ${colors.shade0}
+format-discharging-padding = 1
+;format-discharging-underline = ${self.format-charging-underline}
+
+format-full-background = ${colors.shade0}
+format-full-padding = 1
+format-full-prefix = " "
+;format-full-prefix = " "
+format-full-prefix-background = ${colors.shade0}
+format-full-prefix-foreground = #bbcab7
+;format-full-underline = ${self.format-charging-underline}
+
+time-format = %H:%M
+;label-full-background = ${colors.shade4}
+;label-charging = %percentage%% %time%
+;label-discharging = %percentage%% %time%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+; Only applies if <ramp-capacity> is used
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-3 = 
+;ramp-capacity-4 = 
+ramp-capacity-foreground = #bbcab7
+
+click-right = powertime
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[settings]
+screenchange-reload = true
+compositing-background = xor
+compositing-foreground = source
+compositing-border = over
+pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

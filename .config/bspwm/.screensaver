@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+#for mon_id in $(bspc query -M); do
+#       	bspc rule -a '*:*' -o monitor="$mon_id"
+#       	urxvt -name cmatrixterm -e zsh -ic "timeout 178 cbonsai -S -M 20 -L 105 -b 2" & #unimatrix -fans 88 -l 'o' -t 178 &
+ #      	bspc subscribe node_add -c 1 > /dev/null
+#done
+#wait -n
+#jobs -rp | xargs -r -n1 kill
+
+tmux new-session -d -s matrix timeout 178 cbonsai -i -M 20 -L 105 -b 2  #pipes.sh -r 8000
+#unimatrix -fans 88 -l 'o' -t 178
+
+for mon_id in $(bspc query -M); do
+    bspc rule -a '*:*' -o monitor="$mon_id"
+    termite --name cmatrixterm -e "tmux attach -t matrix \; set status off" & disown
+    bspc subscribe node_add -c 1 > /dev/null
+done
+

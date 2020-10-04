@@ -1,0 +1,9 @@
+set auto-size off
+set seconds on
+date 'LONG BREAK'
+style active-fg 5
+style colon-fg 5
+mode timer
+timer-exec 'notify-send -u normal "Pomodoro\nLong break over!"; pkill peaclock'
+timer 00h:15m:00s
+timer start

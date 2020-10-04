@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mopidy -q & sleep 3 & ncmpcpp
+killall mopidy

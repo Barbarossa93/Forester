@@ -1,0 +1,22 @@
+#!/bin/sh
+playerctl pause
+
+#sflock -f "-misc-tamsyn-medium-r-normal--15-108-100-100-c-80-iso8859-1"
+
+#i3lock -i ~/Pictures/colors/1c1c1c.png -t --datestr "$USER" --datecolor=d0d0d0 --datepos='w/2+x:h/2-65' --date-font="Misc Tamsyn" --datesize=15 --force-clock --timestr="%I:%M %p" --timesize=12 --timecolor=d0d0d0 --time-font="Misc Tamsyn" --timepos='w/2+x:h/2-40' --greetertext "___________________________________" --greeterpos='w/2+x:h/2-60' --greetercolor=d0d0d0 --greetersize=12 --insidevercolor=1c1c1c --insidewrongcolor=1c1c1c --insidecolor=1c1c1c --ringvercolor=1c1c1c --ringwrongcolor=1c1c1c --ringcolor=1c1c1c --linecolor=1c1c1c --keyhlcolor=1c1c1c --bshlcolor=1c1c1c --separatorcolor=1c1c1c --wrongcolor=d0d0d0 --verifcolor=d0d0d0 --wrong-font="Misc Tamsyn" --verif-font="Misc Tamsyn" --veriftext="verifying..." --wrongsize=11 --verifsize=11 --indpos="w/2+x:h/2-20"
+
+#xrandr --output HDMI-1-1 --brightness 0
+
+for mon_id in $(bspc query -M); do
+	bspc rule -a "blank-screen" -o monitor="$mon_id" state=fullscreen
+	feh --class blank-screen --zoom fill Pictures/colors/323d43.png &
+done
+
+sleep 0.25
+physlock -b "~/.config/bspwm/center_cursor" -a "setterm --blank 0; setterm --powerdown 0"
+
+pkill -f blank-screen
+
+wait
+
+playerctl play

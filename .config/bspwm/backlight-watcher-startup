@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkfifo /tmp/xobbacklight
+tail -f /tmp/xobbacklight | xob -s backlight

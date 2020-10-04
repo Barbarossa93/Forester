@@ -1,0 +1,16 @@
+set auto-size off
+set seconds on
+block 2 1
+padding 0 0
+margin 0 0
+ratio 2 1
+fill ''
+locale ''
+timezone ''
+date 'WORKING SESSION'
+style active-fg 5
+style colon-fg 5
+timer-exec 'notify-send -u normal "Pomodoro\nWork period over!"; pkill peaclock'
+mode timer
+timer 00h:25m:00s
+timer start

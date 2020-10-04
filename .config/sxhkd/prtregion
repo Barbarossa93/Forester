@@ -1,0 +1,5 @@
+#!/bin/sh
+
+notify-send -u normal -t 3000 ' Select a region to screenshot'
+maim -s ~/Pictures/Screenshots/$(date +%s).png
+notify-send -u normal -t 3000 ' Screenshot of region taken'

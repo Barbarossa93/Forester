@@ -1,0 +1,4 @@
+#!/bin/sh
+
+greenclip print | sed '/^$/d' | rofi -config ~/.config/rofi/old/sxhkd.rasi -dmenu -i -l 10 -p  | xargs -r -d'\n' -I '{}' greenclip print '{}'
+
