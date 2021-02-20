@@ -4,7 +4,7 @@ Here are the dotfiles for my laptop setup on the latest herbstluftwm-git. These 
 
 NOTE: These dots are intended for my setup, so if you wish to use them (and feel free to do so!) you will have to adapt them to your machine
 
-New reddit link: 
+New reddit link: https://www.reddit.com/r/unixporn/comments/lofniv/herbstluftwm_gloomy_forester/
 
 Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester/
 
