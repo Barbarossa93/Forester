@@ -5,20 +5,21 @@ Here are the dotfiles for my laptop setup on the latest herbstluftwm-git. These 
 NOTE: These dots are intended for my setup, so if you wish to use them (and feel free to do so!) you will have to adapt them to your machine
 
 New reddit link: 
+
 Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester/
 
 ## Info
 - OS: Arch
 - WM: herbstluftwm
 - Terminal: Termite
-- Shell: fish
+- Shell: Fish
 - Browser: Firefox
 - Editor: Neovim
 - System monitor: Htop
 - Launcher: [Sway-desktop-launcher](https://github.com/Biont/sway-launcher-desktop)
 - Dropdown: [tdrop](https://github.com/noctuid/tdrop)
 - Bar: Polybar
-- Fonts: [spectrum berry](https://github.com/seraxis/pcf-spectrum-berry) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, waffle for bar icons, and Kochi-substitute for CJK
+- Fonts: [spectrum berry](https://github.com/seraxis/pcf-spectrum-berry) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, custom waffle for bar icons, and Kochi-substitute for CJK
 - Music: [Spotify-tui](https://github.com/Rigellute/spotify-tui) with spotifyd
 - GTK: Oomox generated arc theme adapted to forest-night colorscheme
 - File Manager: Ranger
