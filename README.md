@@ -19,7 +19,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - Launcher: [Sway-desktop-launcher](https://github.com/Biont/sway-launcher-desktop)
 - Dropdown: [tdrop](https://github.com/noctuid/tdrop)
 - Bar: Polybar
-- Fonts: [spectrum berry](https://github.com/seraxis/pcf-spectrum-berry) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, custom waffle for bar icons, and Kochi-substitute for CJK
+- Fonts: [spectrum berry](https://github.com/seraxis/pcf-spectrum-berry) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, [custom waffle](https://github.com/Barbarossa93/Forester/blob/main/.fonts/wafflemedium.otb) for bar icons, and Kochi-substitute for CJK
 - Music: [Spotify-tui](https://github.com/Rigellute/spotify-tui) with spotifyd
 - GTK: Oomox generated arc theme adapted to forest-night colorscheme
 - File Manager: Ranger
@@ -28,4 +28,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - Notifications: My fork of [Dunst](https://github.com/Barbarossa93/dunst)
 - Compositor: Vanilla picom
 - Login manager: Xinit with i3lock-color
+- Screen manager: [Clight](https://github.com/FedeDP/Clight)
 - Colorscheme: [Forest-night](https://github.com/sainnhe/forest-night)
+
+<img src="https://github.com/Barbarossa93/Forester/blob/main/out.png" alt="img" align="center">
