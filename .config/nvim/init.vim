@@ -14,7 +14,6 @@ filetype off                  " required
 
     call plug#begin('~/.vim/plugged')
 
-Plug 'dylanaraps/wal.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'ycm-core/YouCompleteMe'
@@ -22,11 +21,12 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mhinz/vim-startify'
+Plug 'glepnir/dashboard-nvim'
+Plug 'mbbill/undotree'
 
 "Cool stuff
 
-Plug 'gabrielelana/vim-markdown'
+"Plug 'gabrielelana/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'Raimondi/delimitMate'
@@ -36,38 +36,30 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'heavenshell/vim-pydocstring'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-obsession'
-Plug 'jceb/vim-orgmode'
-Plug 'dbeniamine/cheat.sh-vim'
+"Plug 'dbeniamine/cheat.sh-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/forest-night'
+"Plug 'b4skyx/serenade'
 Plug 'semanser/vim-outdated-plugins'
 Plug 'sheerun/vim-polyglot'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'w0rp/ale'
+Plug 'nathanaelkane/vim-indent-guides'
 
 set rtp+=~/.fzf
 Plug 'junegunn/fzf.vim'
 "Plug 'edkolev/tmuxline.vim'
 
 "R Plugins
-Plug 'jalvesaq/Nvim-R'
-Plug 'rizzatti/dash.vim'
-Plug 'chrisbra/csv.vim'
-Plug 'gaalcaras/ncm-R'
-Plug 'sirver/UltiSnips'
-Plug 'w0rp/ale'
-Plug 'jimhester/lintr'
+"Plug 'jalvesaq/Nvim-R'
+"Plug 'rizzatti/dash.vim'
+"Plug 'chrisbra/csv.vim'
+"Plug 'gaalcaras/ncm-R'
+"Plug 'sirver/UltiSnips'
+"Plug 'jimhester/lintr'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plug 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plug 'git://git.wincent.com/command-t.git'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 call plug#end()
 
@@ -108,15 +100,6 @@ set foldlevel=99
 nnoremap <space> za
 
 let g:SimpylFold_docstring_preview=1
-
-au BufNewFile,BufRead *.py 
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
 
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
@@ -182,29 +165,26 @@ let g:airline_symbols.dirty=' '
 let skip_defaults_vim=1
 "set viminfo=""
 
-" Startify options
-let g:startify_custom_header = [
-	\ ' =================     ===============     ===============   ========  ======== ',
-	\ ' \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . // ',
-	\ ' ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .|| ',
-	\ ' || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . || ',
-	\ ' ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .|| ',
-	\ ' || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . || ',
-	\ ' ||. . ||   ||-   || ||  `-||   || . .|| ||. . ||   ||-   || ||  `|\_ . .|. .|| ',
-	\ ' || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . || ',
-	\ ' ||_-  ||  .|/    || ||    \|.  || `-_|| ||_-  ||  .|/    || ||   | \  / |-_.|| ',
-	\ ' ||    ||_-       || ||      `-_||    || ||    ||_-       || ||   | \  / |  `|| ',
-	\ ' ||    `          || ||         `     || ||    `          || ||   | \  / |   || ',
-	\ ' ||            .===  `===.         .=== .`===.         .===  /==. |  \/  |   || ',
-	\ ' ||         .==    \_|-_ `===. .===    _|_   `===. .===  _-|/   `==  \/  |   || ',
-	\ ' ||      .==     _-     `-_  `=     _-    `-_    `=   _-    `-_  /|  \/  |   || ',
-	\ ' ||   .==     _-           `-__\._-          `-_./__-          `  |. /|  |   || ',
-	\ ' ||.==     _-                                                      `  |  /==.|| ',
-	\ ' ==     _-                         N E O V I M                         \/   `== ',
-	\ ' \   _-                                                                 `-_   / ',
-	\ '  ``                                                                       ``   ',
-	\ ]
+" Dashboard options
+let g:dashboard_custom_header = [
+\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\]
 
+let g:mapleader="\<Space>"
+let g:dashboard_default_executive ='fzf'
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 
 " setup for goyo & limelight
 let g:limelight_conceal_ctermfg = 'gray'
@@ -285,7 +265,7 @@ au BufRead /tmp/mutt-* set tw=72
 au BufRead /tmp/mutt-* set wrap
 
 " airline theme
-let g:airline_theme='forest_night'   "'monochrome'
+let g:airline_theme='forest_night'
 
 "Indent line settings
 set listchars=tab:\|\ 

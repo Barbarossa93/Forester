@@ -1,7 +1,7 @@
 [logout]
 list_cmd=echo -e 'logout\034logout\034↵  logout'
 preview_cmd=echo -e 'Logout of the bspwm session'
-launch_cmd=bspc quit
+launch_cmd=herbstclient quit
 
 [shutdown]
 list_cmd=echo -e 'shutdown\034shutdown\034⏻  shutdown'

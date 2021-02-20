@@ -1,9 +1,9 @@
-set auto-size off
+set auto-size on
 set seconds on
 date 'SHORT BREAK'
-style active-fg 5
-style colon-fg 5
-timer-exec 'notify-send -u normal "Pomodoro\nShort break over!"; pkill peaclock'
+style active-fg 6
+style colon-fg 6
+timer-exec 'notify-send -u normal "Pomodoro\nShort break over!"; mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null; pkill peaclock; stty sane'
 mode timer
 timer 00h:05m:00s
 timer start

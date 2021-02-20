@@ -1,12 +1,19 @@
+#########################################
+# __                       __ __         
+#|  |_.-----.----.--------|__|  |_.-----.
+#|   _|  -__|   _|        |  |   _|  -__|
+#|____|_____|__| |__|__|__|__|____|_____|
+#########################################                                        
+
 [options]
 allow_bold = true
 #audible_bell = false
 bold_is_bright = false
-#cell_height_scale = 1.0
+cell_height_scale = 1.1
 #cell_width_scale = 1.0
 clickable_url = true
 dynamic_title = true
-font = monospace 9
+font = monospace 8
 fullscreen = false
 #icon_name = terminal
 #mouse_autohide = false
@@ -35,7 +42,7 @@ filter_unmatched_urls = true
 #modify_other_keys = false
 
 # set size hints for the window
-size_hints = true
+size_hints = false
 
 # "off", "left" or "right"
 scrollbar = off
@@ -43,12 +50,10 @@ scrollbar = off
 [colors]
 # If both of these are unset, cursor falls back to the foreground color,
 # and cursor_foreground falls back to the background color.
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
+cursor = #d8caac
+cursor_foreground = #323d43
 
-foreground = #d8caac
 #foreground_bold = #ffffff
-background = #323d43
 
 # 20% background transparency (requires a compositor)
 #background = #323d43
@@ -57,7 +62,10 @@ background = #323d43
 #highlight = #2f2f2f
 
 # Colors from color0 to color254 can be set
-color0=#868d80
+##forest-night
+foreground = #d8caac
+background = #323d43
+color0=#3c474d
 color8=#868d80
 color1=#e68183
 color9=#e68183
@@ -74,6 +82,25 @@ color14=#87c095
 color7=#d8caac
 color15=#d8caac
 
+##serenade
+#foreground=#d8caac
+#background=#2a2f33
+#color0=#2e3338
+#color8=#7f868c
+#color1=#d76e6e
+#color9=#d76e6e
+#color2=#acb765
+#color10=#acb765
+#color3=#c1bf89
+#color11=#c1bf89
+#color4=#82abbc
+#color12=#82abbc
+#color5=#d39bb6
+#color13=#d39bb6
+#color6=#87c095
+#color14=#87c095
+#color7=#d8caac
+#color15=#d8caac
 
 [hints]
 font = monospace 9

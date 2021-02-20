@@ -1,6 +1,12 @@
+#########################################
+#    __                   __             
+#.--|  .--.--.-----.-----|  |_.----.----.
+#|  _  |  |  |     |__ --|   _|   _|  __|
+#|_____|_____|__|__|_____|____|__| |____|
+#########################################                                        
+
 [colors]
-	background = "#323d43"
-	foreground = "#a7c080"
+    foreground = "#d8caac"
 
 [global]
     ### Display ###
@@ -8,26 +14,28 @@
     monitor = 0
     follow = keyboard
 
-    #geometry = "262x5-829-46"
-    geometry = "262x3-14+46"
+    geometry = "288x3-816-46"
+    #geometry = "262x3-14+46"
+    #geometry = "384x3-14+50"    
     indicate_hidden = yes
-    shrink = true
-    transparency = 0
-    notification_height = 0
-    separator_height = 2
+    shrink = false
+    transparency = 1
+    notification_height = 3
+    separator_height = 1
     padding = 24
     horizontal_padding = 24
-    #frame_width = 2
+    frame_width = 1
+    outer_frame_width = 5
     corner_radius = 0
 
-    #frame_color = "#a7c080"
+    outer_frame_color = "#323d43"
     separator_color = auto
     sort = yes
     idle_threshold = 120
 
     ### Text ###
-    font = terra, waffle 8
-    line_height = 0
+    font = spectrum berry, tewii, waffle, Cozette, Kochi Gothic  8
+    line_height = 1
 
     markup = full
 
@@ -41,7 +49,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "%s\n\n%b"
+    format = "%s\n%b"
     alignment = center
     show_age_threshold = 60
     word_wrap = true
@@ -53,17 +61,17 @@
 
     ### Icons ###
     icon_position = left
-    max_icon_size = 64
-    #icon_path = /usr/share/icons/zafiro-icon-theme/status/22/
+    max_icon_size = 80
+    #icon_path = /usr/share/icons/PineCone/48x48/status/:/usr/share/icons/PineCone/48x48/apps/:/usr/share/icons/PineCone/48x48/devices/
 
     ### History ###
     sticky_history = yes
     history_length = 20
 
     ### Misc/Advanced ###
-    dmenu = /usr/bin/urxvt -e fzf:
-    browser = /usr/bin/linkhandler
-    always_run_script = true
+    dmenu = /usr/bin/termite -e fzf:
+    browser = linkhandler
+    always_run_script = false
     title = Dunst
     class = Dunst
     startup_notification = false
@@ -75,24 +83,24 @@
 [shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
-    context = ctrl+shift+period
+    #context = ctrl+shift+period
     history = ctrl+grave
 
 [urgency_low]
-    background = colors.background
-    foreground = "#89beba"
-    #frame_color = "#89beba"
-    timeout = 5
+    background = "#323d43"
+    #foreground = "#89beba"
+    frame_color = "#89beba"
+    timeout = 3
 
 [urgency_normal]
-    background = colors.background
-    foreground = "#a7c080"
+    background = "#323d43"
+    frame_color = "#a7c080"
     timeout = 5
 
 [urgency_critical]
-    background = colors.background
-    foreground = "#e68183"
-    #frame_color = "#e68183"
+    background = "#323d43"
+    #foreground = "#e68183"
+    frame_color = "#e68183"
     timeout = 0
 
 # vim: ft=conf

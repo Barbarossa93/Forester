@@ -13,20 +13,91 @@
 # Files
 data.location=~/.task
 
+#Taskwarrior-tui
+uda.taskwarrior-tui.selection.indicator=•
+uda.taskwarrior-tui.selection.bold=yes
+uda.taskwarrior-tui.selection.italic=no
+uda.taskwarrior-tui.selection.dim=no
+uda.taskwarrior-tui.selection.blink=no
+uda.taskwarrior-tui.calendar.months-per-row=4
+uda.taskwarrior-tui.task-report.show-info=true
+uda.taskwarrior-tui.task-report.looping=true
+uda.taskwarrior-tui.style.context.active=black on rgb444
+uda.taskwarrior-tui.style.calendar.title=black on rgb444
+
 color=on
 # Color theme (uncomment one to use)
-#include /usr/share/doc/task/rc/light-16.theme
-#include /usr/share/doc/task/rc/light-256.theme
-include /usr/share/doc/task/rc/dark-16.theme
-#include /usr/share/doc/task/rc/dark-256.theme
-#include /usr/share/doc/task/rc/dark-red-256.theme
-#include /usr/share/doc/task/rc/dark-green-256.theme
-#include /usr/share/doc/task/rc/dark-blue-256.theme
-#include /usr/share/doc/task/rc/dark-violets-256.theme
-#include /usr/share/doc/task/rc/dark-yellow-green.theme
-#include /usr/share/doc/task/rc/dark-gray-256.theme
-#include /usr/share/doc/task/rc/dark-gray-blue-256.theme
-#include /usr/share/doc/task/rc/solarized-dark-256.theme
-#include /usr/share/doc/task/rc/solarized-light-256.theme
-#include /usr/share/doc/task/rc/no-color.theme
+rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
 
+# General decoration
+color.label=cyan
+color.label.sort=cyan
+color.alternate=magenta
+color.header=yellow
+color.footnote=yellow
+color.warning=bold red
+color.error=white on red
+color.debug=blue
+
+# Task state
+color.completed=blue
+color.deleted=gray
+color.active=black on bright green
+color.recurring=magenta
+color.scheduled=white on green
+color.until=
+color.blocked=black on white
+color.blocking=black on bright white
+
+# Project
+color.project.none=
+
+# Priority
+color.uda.priority.H=bold white
+color.uda.priority.M=white
+color.uda.priority.L=
+
+# Tags
+color.tag.next=bold yellow
+color.tag.none=
+color.tagged=green
+
+# Due
+color.due=red
+color.due.today=red
+color.overdue=bold red
+
+# UDA
+#color.uda.X=
+
+# Report: burndown
+color.burndown.done=on green
+color.burndown.pending=on red
+color.burndown.started=on yellow
+
+# Report: history
+color.history.add=black on red
+color.history.delete=black on yellow
+color.history.done=black on green
+
+# Report: summary
+color.summary.background=white on black
+color.summary.bar=black on green
+
+# Command: calendar
+color.calendar.due=white on red
+color.calendar.due.today=bold white on red
+color.calendar.holiday=black on bright yellow
+color.calendar.overdue=black on bright red
+color.calendar.today=bold white on bright blue
+color.calendar.weekend=white on bright black
+color.calendar.weeknumber=bold blue
+
+# Command: sync
+color.sync.added=green
+color.sync.changed=yellow
+color.sync.rejected=red
+
+# Command: undo
+color.undo.after=green
+color.undo.before=red
