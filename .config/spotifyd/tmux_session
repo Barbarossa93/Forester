@@ -1,0 +1,20 @@
+neww
+set status off
+set-option default-terminal "xterm-termite"
+send-keys '~/.config/spotify-tui/spotify.sh' C-m
+split-window -h
+resize-pane -t 1 -x 227
+select-pane -t 2
+send-keys '~/.config/spotifyd/cover.sh' C-m
+select-pane -t 1
+split-window -v
+select-pane -t 2
+resize-pane -t 2 -y 16
+send-keys 'cava' C-m
+select-pane -t 3
+split-window -v
+select-pane -t 4
+resize-pane -t 4 -y 36
+send-keys 'lyrics-in-terminal' C-m
+select-pane -t 1
+rename-session Spotify
