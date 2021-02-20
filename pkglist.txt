@@ -75,6 +75,7 @@ mate-polkit 1.24.0-1
 mpv 1:0.33.0-4
 mpv-mpris 0.5-4
 mutt-wizard 3.2.1-1
+navi 2.14.0-1
 nb 5.7.8-1
 ncdu 1.15.1-2
 neofetch 7.1.0-2
@@ -87,6 +88,7 @@ numlockx 1.2-5
 nvidia 460.39-8
 nvidia-settings 460.39-1
 openconnect 1:8.10-1
+paclabel-git r47.e36e2ff-1
 pacman-contrib 1.4.0-1
 pam-gnupg-git r49.f4aacb9-1
 paru 1.2.2-2
