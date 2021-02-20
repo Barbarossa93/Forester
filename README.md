@@ -18,6 +18,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - System monitor: Htop
 - Launcher: [Sway-desktop-launcher](https://github.com/Biont/sway-launcher-desktop)
 - Dropdown: [tdrop](https://github.com/noctuid/tdrop)
+- Overlay bars: [Xob](https://github.com/florentc/xob)
 - Bar: Polybar
 - Fonts: [spectrum berry](https://github.com/seraxis/pcf-spectrum-berry) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, [custom waffle](https://github.com/Barbarossa93/Forester/blob/main/.fonts/wafflemedium.otb) for bar icons, and Kochi-substitute for CJK
 - Music: [Spotify-tui](https://github.com/Rigellute/spotify-tui) with spotifyd
