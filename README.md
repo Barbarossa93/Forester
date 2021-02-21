@@ -21,7 +21,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - Overlay bars: [Xob](https://github.com/florentc/xob)
 - Bar: Polybar
 - Fonts: [spectrum berry](https://github.com/seraxis/pcf-spectrum-berry) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, [custom waffle](https://github.com/Barbarossa93/Forester/blob/main/.fonts/wafflemedium.otb) for bar icons, and Kochi-substitute for CJK
-- Music: [Spotify-tui](https://github.com/Rigellute/spotify-tui) with spotifyd
+- Music: [Spotify-tui](https://github.com/Rigellute/spotify-tui) with spotifyd. Using tmux to show album image (with ueberzug), cava, and [lyrics-in-terminal](https://github.com/Jugran/lyrics-in-terminal)
 - GTK: Oomox generated arc theme adapted to forest-night colorscheme
 - File Manager: Ranger
 - Chat: Weechat with [weechat-discord](https://github.com/terminal-discord/weechat-discord)
