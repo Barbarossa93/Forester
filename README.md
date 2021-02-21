@@ -12,7 +12,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - OS: Arch
 - WM: herbstluftwm
 - Terminal: Termite
-- Shell: Fish
+- Shell: Fish with [tide](https://github.com/IlanCosman/tide) prompt
 - Browser: Firefox
 - Editor: Neovim
 - System monitor: Htop
