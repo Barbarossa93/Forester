@@ -4,7 +4,8 @@ bluetooth_print() {
     bluetoothctl | while read -r; do
         if [ "$(sudo bluetooth | awk '{print $3}')" = "on" ]; then
             #printf ''
-	    printf "%s" "%{F#89beba} %{F-}"
+	    #printf "%s" 
+      echo "%{F#89beba} %{F-}"
 
             devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
             counter=0
@@ -24,11 +25,11 @@ bluetooth_print() {
                     counter=$((counter + 1))
                 fi
 
-                printf '\n'
+                #printf '\n'
             done
         else
             #echo "%{F#9a998e}%{F-} Off"
-            echo "%{F#868d80}%{F-} Off"	    
+            echo "%{F#868d80}%{F-} Off"
         fi
     done
 }

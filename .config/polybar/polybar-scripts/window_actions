@@ -7,7 +7,7 @@ size=32
 
 case "$1" in
 hide)
-	setsid -f termite --name "notifHistory" -e "nvim \"+ normal G $\" ~/.history"
+	setsid -f termite --name "notifHistory" -e "nvim \"+ normal G $\" $HOME/.history"
 	#bspc node "$active_window" -g hidden
 	;;
 close)

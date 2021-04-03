@@ -48,16 +48,13 @@ shade13 = ${xrdb:color13}
 shade14 = ${xrdb:color14}
 shade15 = ${xrdb:color15}
 
-[bar/example]
+[bar/hlbar]
 monitor = eDP1
-width = 80%
-;:-11
-height = 36
-offset-x = 10%
-;:+5
-offset-y = 6
-;11
-;radius = 6.0
+width = 80%:-12
+height = 24
+offset-x = 10%:+6
+offset-y = 11
+;radius = 18.0
 fixed-center = true
 bottom = false
 
@@ -67,38 +64,37 @@ foreground = ${colors.foreground}
 ;line-size = 2
 ;line-color = ${colors.shade9}
 
-;border-size = 1
-;border-color = ${colors.shade8}
+border-size = 1
+border-color = ${colors.shade8}
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = terra:style=Regular:size=12;2
-font-1 = waffle:style=Regular:size=9;2
-font-2 = Cozette:style=Medium:size=9;2
+font-0 = spectrum berry:style=Regular:size=9;2
+font-1 = waffle:style=medium:size=9;2
+font-2 = Cozette:style=Medium:size=11;2
 ;font-0 = Iosevka:antialias=true:style=Regular:size=10;3
 ;font-1 = Font Awesome 5 Free Solid:antialias=true:style=Solid:size=10;2
 ;font-3 = Font Awesome 5 Brands Regular:antialias=true:style=Regular:size=10;2
 font-3 = FiraCode Nerd Font Mono:antialias=true:style=regular:size=13;3
-font-4 = Noto Color Emoji:scale=12;2
+font-4 = Twemoji:scale=12;2
 
 dpi = 0
 
-modules-left = bspmode bspwm
-modules-center = date sep time updates-arch-combined
-modules-right = pulseaudio sep backlight sep battery sep eth wlan sep bluetooth
+modules-left = hlwm_layout sep hlwm-workspaces sep taskwarrior
+modules-center = xwindow_icon windowscroll updates-arch-combined
+modules-right = pulseaudio sep backlight sep battery sep eth wlan sep time
 
-tray-position = right
-tray-padding = 2
-tray-background = ${colors.back}
-tray-transparency = false
-
-wm-restack = bspwm
+;tray-position = right
+;tray-padding = 2
+;tray-background = ${colors.back}
+;tray-transparency = false
 
 override-redirect = true
+;wm-restack = bspwm
 
 ;scroll-up = bspc desktop -f prev
 ;scroll-down = bspc desktop -f next
@@ -109,15 +105,34 @@ cursor-click = pointer
 enable-ipc = true
 pseudo-transparency = false
 
-[bar/example1]
-monitor = VIRTUAL1
-width = 80%
-;:-11
+[bar/tray]
+monitor = eDP1
+width = 1%
 height = 36
-offset-x = 10%
-;:+5
-offset-y = 6
-;11
+offset-x = 95%
+offset-y = 5%
+bottom = true
+
+;border-bottom-size = 2
+;border-color = ${colors.shade8}
+
+modules-right = void
+background = ${colors.shade8}
+
+tray-position = right
+tray-padding = 0
+tray-background = ${colors.shade8}
+tray-maxsize = 36
+
+wm-restack = bspwm
+override-redirect = true
+
+[bar/external]
+monitor = VIRTUAL1
+width = 80%:-12
+height = 24
+offset-x = 10%:+6
+offset-y = 11
 ;radius = 5.0
 fixed-center = true
 bottom = false
@@ -128,35 +143,35 @@ foreground = ${colors.foreground}
 ;line-size = 2
 ;line-color = #f00
 
-;border-size = 1
-;border-color = ${colors.shade8}
+border-size = 1
+border-color = ${colors.shade8}
 
 padding = 2
 
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = terra:style=Regular:size=12;2
-font-1 = waffle:style=Regular:size=12;2
-font-2 = Cozette:style=Medium:size=12;2
+font-0 = spectrum berry:style=Regular:size=9;2
+font-1 = waffle:style=Regular:size=9;2
+font-2 = Cozette:style=Medium:size=9;2
 #font-0 = Iosevka:antialias=true:style=Regular:size=10;3
 #font-1 = Font Awesome 5 Free Solid:antialias=true:style=Solid:size=10;2
 ;font-3 = Font Awesome 5 Brands Regular:antialias=true:style=Regular:size=10;2
 font-3 = FiraCode Nerd Font Mono:antialias=true:style=regular:size=13;2
-font-4 = Noto Color Emoji:scale=12;2
+font-4 = Twemoji:scale=12;2
 
 dpi = 0
 
-modules-left = bspmode bspwm
-modules-center = date sep time updates-arch-combined 
-modules-right = pulseaudio sep backlight sep battery sep eth wlan sep bluetooth
+modules-left = hlwm_layout sep hlwm-workspaces sep taskwarrior
+modules-center = xwindow_icon windowscroll updates-arch-combined 
+modules-right = pulseaudio sep backlight sep battery sep eth wlan sep time
 
-tray-position = none
-tray-padding = 2
-tray-background = ${colors.back}
-tray-transparency = false
+;tray-position = none
+;tray-padding = 2
+;tray-background = ${colors.back}
+;tray-transparency = false
 
-wm-restack = bspwm
+;wm-restack = bspwm
 
 override-redirect = true
 
@@ -180,7 +195,7 @@ bottom = false
 modules-center = void
 background = ${colors.back}
 
-wm-restack = bspwm
+;wm-restack = bspwm
 override-redirect = true
 
 [bar/ext-background]
@@ -188,14 +203,14 @@ monitor = VIRTUAL1
 width = 80%
 ;:+4
 height = 36
-offset-x = 15%
+offset-x = 10%
 offset-y = 6
 bottom = false
 
 modules-center = void
 background = ${colors.back}
 
-wm-restack = bspwm
+;wm-restack = bspwm
 override-redirect = true
 
 [module/void]
@@ -204,14 +219,98 @@ content-foreground = ${colors.shade7}
 content-background = ${colors.shade0}
 content = " "
 
+[module/ewmh]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = false
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-6 = 7;
+icon-7 = 8;
+icon-8 = 9;
+icon-9 = 0;
+
+label-active = %icon%
+label-active-padding = 1
+label-active-foreground = ${colors.shade2}
+label-active-background = ${colors.shade0}
+;label-focused-underline = ${colors.shade6}
+;label-focused-overline = ${colors.shade6}
+
+label-occupied = %icon%
+label-occupied-padding = 1
+label-occupied-background = ${colors.shade0}
+#label-occupied-foreground = ${colors.shade6}
+
+label-urgent = %icon%
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-padding = 1
+label-empty-background = ${colors.shade0}
+label-empty-foreground = ${colors.shade8}
+
+[module/hlwm-workspaces]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/hlwm-workspaces.sh
+tail = true
+scroll-up = herbstclient use_index -1 --skip-visible &
+scroll-down = herbstclient use_index +1 --skip-visible &
+
+[module/hlwm_layout]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/hlwm_layout.sh
+tail = true
+format = <label>
+format-foreground = ${colors.shade1}
+format-padding = 1
+
+[module/pomo]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/polypomo.sh
+tail = true
+interval = 1
+format = <label>
+label = %{T3}%output%%{T-}
+label-padding = 1
+click-left = "echo toggle > /tmp/pomodoro.pipe"
+click-middle = "echo notify > /tmp/pomodoro.pipe"
+click-right = "echo reset > /tmp/pomodoro.pipe"
+
 [module/taskwarrior]
-interval = 30
+interval = 15
 type = custom/script
 exec = ~/.config/polybar/polybar-scripts/task_polybar.sh
 format = <label>
+format-padding = 1
 ;format-foreground = #FFF
-format-prefix = " "
-click-left = task "$((`cat /tmp/tw_polybar_id`))" done
+;format-prefix = "| %{F#e68183}%{F-} "
+;click-left = task "$((`cat /tmp/tw_polybar_id`))" done
 
 [module/notifsAndTime]
 type = custom/script
@@ -238,7 +337,7 @@ label = %{A1:./.config/polybar/polybar-scripts/window_actions hide:}%{A2:./.conf
 ;format-prefix = " "
 ;format-prefix-foreground = ${colors.shade4}
 ;format-prefix = " "
-format-padding = 1
+format-padding-right = 1
 format-background = ${colors.shade0}
 
 [module/player-mpris-simple]
@@ -253,7 +352,7 @@ type = custom/script
 exec = ~/.config/polybar/polybar-scripts/updates-arch-combined.sh
 interval = 300
 format-background = ${colors.shade0}
-format-prefix = "| "
+format-prefix = " | "
 format-prefix-foreground = ${colors.shade7}
 format-padding = 0
 
@@ -271,14 +370,23 @@ content-foreground = ${colors.shade7}
 content-background = ${colors.shade0}
 content = "|"
 
+[module/xwindow_icon]
+type = custom/text
+content-foreground = ${colors.shade8}
+content-background = ${colors.shade0}
+content = ""
+;content-padding = 1
+
 [module/xwindow]
 type = internal/xwindow
-label = 
+;label = %title%
+label = %{A1:./.config/polybar/polybar-scripts/window_actions hide:}%{A2:./.config/polybar/polybar-scripts/window_actions close:}%{A3:./.config/polybar/polybar-scripts/window_actions slop_resize:}%{A4:./.config/polybar/polybar-scripts/window_actions increment_size:}%{A5:./.config/polybar/polybar-scripts/window_actions decrement_size:}%title%%{A}%{A}%{A}%{A}%{A}
 
 format = <label>
 format-prefix = " "
+format-prefix-foreground = ${colors.shade8}
 ;format-prefix = " "
-format-padding = 1
+;padding-right = 1
 format-background = ${colors.shade0}
 
 ; Used instead of label when there is no window title
@@ -286,6 +394,7 @@ format-background = ${colors.shade0}
 ;   None
 label-empty = Desktop
 ;label-empty-background = ${colors.background-alt}
+label-maxlen = 439
 
 [module/filesystem]
 type = internal/fs
@@ -325,7 +434,7 @@ label-empty = %name%
 label-empty-padding = 1
 label-empty-background = ${colors.shade0}
 
-[module/bspmode]
+[module/bsplayout]
 type = internal/bspwm
 
 format = <label-mode>
@@ -347,20 +456,34 @@ label-monocle = 
 label-monocle-padding = 1
 label-tiled = 
 label-tiled-padding = 1
+
+[module/bspmode]
+type = internal/bspwm
+
+format = <label-mode>
+pin-workspace = false
+enable-scroll = false
+inline-mode = false
+
+;format-suffix = %{Fcolors.shade7}|%{F-}
+format-background = ${colors.shade0}
+format-foreground = ${colors.shade8}
+;format-padding = 1
+
 label-fullscreen = 
-label-fullscreen-padding = 1
+label-fullscreen-padding-left = 1
 label-floating = 
-label-floating-padding = 1
+label-floating-padding-left = 1
 label-pseudotiled = 
-label-pseudotiled-padding = 1
+label-pseudotiled-padding-left = 1
 label-locked = 
-label-locked-padding = 1
+label-locked-padding-left = 1
 label-sticky = 
-label-sticky-padding = 1
+label-sticky-padding-left = 1
 label-private = 
-label-private-padding = 1
+label-private-padding-left = 1
 label-marked = 
-label-marked-padding = 1
+label-marked-padding-left = 1
 
 [module/extbacklight]
 type = internal/backlight
@@ -437,14 +560,14 @@ label = %{A1:urxvt -e htop:}%percentage_used%%%{A}
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp8s0
 interval = 3.0
 
 format-connected-background = ${colors.shade0}
 format-connected = <ramp-signal> <label-connected>
 format-connected-padding = 1
 ;format-connected-underline = ${xrdb:color5}
-label-connected = %{A1:urxvt -e nmtui:}%{A3:/home/barbarossa/.config/polybar/polybar-scripts/togglewifi.sh:}%signal%%%{A}%{A}
+label-connected = %{A1:termite -e nmtui:}%{A3:/home/barbarossa/.config/polybar/polybar-scripts/togglewifi.sh:}%signal%%%{A}%{A}
 
 format-disconnected = <label-disconnected>
 format-disconnected-background = ${colors.shade0}
@@ -465,7 +588,7 @@ ramp-signal-4 = 
 ;ramp-signal-2 = 
 ;ramp-signal-3 = 
 ;ramp-signal-4 = 
-ramp-signal-foreground = ${colors.shade13}
+ramp-signal-foreground = ${colors.shade4}
 
 [module/eth]
 type = internal/network
@@ -525,13 +648,13 @@ format-volume-padding = 1
 label-volume = %percentage%%
 label-volume-foreground = ${colors.shade15}
 
-label-muted = 
+label-muted =  M
 ;label-muted = 
 label-muted-background = ${colors.shade0}
 label-muted-foreground = ${colors.shade8}
 label-muted-padding = 1
 
-click-right = urxvt -e pulsemixer
+click-right = termite -e pulsemixer
 
 ramp-volume-0 = 
 ramp-volume-1 = 

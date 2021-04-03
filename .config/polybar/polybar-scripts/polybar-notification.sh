@@ -89,7 +89,7 @@ tail -n 1 -F /tmp/output 2>/dev/null |
 		json_line=$(echo "$raw_json" | tr -d '\n' | sed -E 's:,(\s*}):\1:g' | sed -E -n 'H; x; s:,(\s*\n\s*}):\1:; P; ${x; p}' | sed '1 d')
 		test=$(echo "$json_line")
 		if [[ "$test" == "" ]]; then
-			withlock .clock-LOCK /home/barbarossa/.config/polybar/polybar-scripts/polybar-clock.sh 2>/dev/null &
+			withlock .title-LOCK /home/barbarossa/.config/polybar/polybar-scripts/polybar-window-title.sh 2>/dev/null &
 		else
 			#pkill -f polybar-clock.sh
 			kill $(jobs -rp) &>/dev/null

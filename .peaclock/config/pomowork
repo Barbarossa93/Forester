@@ -1,4 +1,4 @@
-set auto-size off
+set auto-size on
 set seconds on
 block 2 1
 padding 0 0
@@ -8,9 +8,9 @@ fill ''
 locale ''
 timezone ''
 date 'WORKING SESSION'
-style active-fg 5
-style colon-fg 5
-timer-exec 'notify-send -u normal "Pomodoro\nWork period over!"; pkill peaclock'
+style active-fg 6
+style colon-fg 6
+timer-exec 'notify-send -u normal "Pomodoro\nWork period over!"; mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null; pkill peaclock; stty sane'
 mode timer
 timer 00h:25m:00s
 timer start

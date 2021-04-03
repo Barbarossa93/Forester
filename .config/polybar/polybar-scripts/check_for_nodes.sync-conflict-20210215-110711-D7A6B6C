@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$(bspc query -N -d focused -n .window.\!hidden)" == "" ]; then
+	echo "No windows on desktop"
+else
+	echo "Windows on desktop"
+fi
