@@ -18,7 +18,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - System monitor: Htop
 - Launcher: [Sway-desktop-launcher](https://github.com/Biont/sway-launcher-desktop)
 - Overlay bars: [Xob](https://github.com/florentc/xob)
-- Bar: [Lemonbar](https://github.com/LemonBoy/bar)
+- Bar: [Lemonbar](https://github.com/LemonBoy/bar) ([script](https://github.com/Barbarossa93/Forester/blob/main/.local/bin/bar.sh)
 - Fonts: [spectrum's berry](https://github.com/cmvnd/fonts) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, [Siji](https://github.com/stark/siji) for bar icons, and Kochi-substitute for CJK
 - Music: [Ncspot](https://github.com/hrkfdn/ncspot) with tmux to show album image (with ueberzug), cava, and [lyrics-in-terminal](https://github.com/Jugran/lyrics-in-terminal)
 - GTK: Everforest colored version of [Elkowar's phocus/gtk fork](https://github.com/elkowar/gtk)
