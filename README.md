@@ -28,6 +28,7 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - Notifications: My fork of [Dunst](https://github.com/Barbarossa93/dunst)
 - Compositor: Vanilla picom
 - Login manager: Xinit with [xsecurelock](https://github.com/google/xsecurelock)
+- Theme switch: [sunpaper.sh](https://github.com/hexive/sunpaper) with custom [script](https://github.com/Barbarossa93/Forester/blob/main/.local/bin/theme_switcher.sh)
 - Colorscheme: [Everforest](https://github.com/sainnhe/everforest)
 
 ## Screenshots
