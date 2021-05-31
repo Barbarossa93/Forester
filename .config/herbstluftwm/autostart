@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 #########################################################################
-# __               __          __   __        ___ __                     
+# __               __          __   __        ___ __
 #|  |--.-----.----|  |--.-----|  |_|  .--.--.'  _|  |_.--.--.--.--------.
 #|     |  -__|   _|  _  |__ --|   _|  |  |  |   _|   _|  |  |  |        |
-#|__|__|_____|__| |_____|_____|____|__|_____|__| |____|________|__|__|__| 
+#|__|__|_____|__| |_____|_____|____|__|_____|__| |____|________|__|__|__|
 #########################################################################
+
+# Wallpaper early for slightly less ugly startup
+#hsetroot -fill ~/Pictures/gloomy_pixel_forest_small.jpg &
+#dyn-wall-rs -d Public/BitForest/ -b "hsetroot -fill" --lat 39.2908816 --long -76.610759 &
 
 hc() {
     herbstclient "$@"
@@ -15,9 +19,6 @@ hc emit_hook reload
 # remove all existing keybindings
 hc keyunbind --all
 
-# Wallpaper early for slightly less ugly startup
-hsetroot -fill ~/Pictures/gloomy_pixel_forest_small.jpg &
-
 # keybindings
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
@@ -25,54 +26,63 @@ Mod=Mod4   # Use the super key as the main modifier
 #Main
 #hc keybind $Mod-Shift-x quit #Quit herbstluftwm
 hc keybind $Mod-Shift-r reload #Reload herbstluftwm
-hc keybind $Mod-q close_and_remove
+hc keybind $Mod-q close_and_remove #Close window and remove frame if last
 hc keybind $Mod-Shift-q close #Close window
-hc keybind $Mod-Return or , and . compare tags.focus.frame_count = 1 . compare tags.focus.curframe_wcount = 0 . spawn termite , and _ compare tags.focus.curframe_wcount = 0 _ spawn termite , chain - split auto - cycle_frame - spawn termite #Spawn my terminal emulator and create new frame
-hc keybind $Mod-Shift-Return spawn termite #Spawn my terminal emulator
-#hc keybind $Mod-Shift-Return spawn open_term_pwd.sh #Spawn terminal in directory of focused window
+hc keybind $Mod-Return or , and . compare tags.focus.frame_count = 1 . compare tags.focus.curframe_wcount = 0 . spawn urxvtdc , and _ compare tags.focus.curframe_wcount = 0 _ spawn urxvtdc , chain - split auto - cycle_frame - spawn urxvtdc #Spawn my terminal emulator and create new frame
+hc keybind $Mod-Shift-Return spawn urxvtdc #Spawn my terminal emulator in directory of focused window
 hc keybind $Mod-Mod1-space spawn ~/.config/herbstluftwm/scripts/extmonsetup.sh #toggle external monitor
-#hc keybind $Mod-backslash spawn open_fm_pwd.sh #Launch ranger in directory of focused window
-hc keybind $Mod-e or , and . compare tags.focus.frame_count = 1 . compare tags.focus.curframe_wcount = 0 . spawn withlock LOCK-launcher termite --name "applauncher" -e launcher , and _ compare tags.focus.curframe_wcount = 0 _ spawn withlock LOCK-launcher termite --name "applauncher" -e launcher , chain - split auto - cycle_frame - spawn withlock LOCK-launcher termite --name "applauncher" -e launcher #start launcher and create new frame
-hc keybind $Mod-Shift-e spawn withlock LOCK-launcher termite --name "applauncher" -e launcher #Start launcher
-hc keybind XF86PowerOff spawn withlock LOCK-power termite --name "powermenu" -e "./.config/sxhkd/fzf-power" # Power menu
+hc keybind $Mod-e or , and . compare tags.focus.frame_count = 1 . compare tags.focus.curframe_wcount = 0 . spawn withlock LOCK-launcher urxvtdc -name "applauncher" -e launcher , and _ compare tags.focus.curframe_wcount = 0 _ spawn withlock LOCK-launcher urxvtdc -name "applauncher" -e launcher , chain - split auto - cycle_frame - spawn withlock LOCK-launcher urxvtdc -name "applauncher" -e launcher #start launcher and create new frame
+hc keybind $Mod-Shift-e spawn withlock LOCK-launcher urxvtdc -name "applauncher" -e launcher #Start launcher
+hc keybind XF86PowerOff spawn withlock LOCK-power urxvtdc -name "powermenu" -e "fzf-power" # Power menu
 
 # Notify with info
-hc keybind $Mod-Control-w spawn ~/.config/sxhkd/weather_status.sh #Weather
+hc keybind $Mod-Control-w spawn weather_status.sh #Weather
 hc keybind $Mod-Mod1-w spawn notify-send -u normal "$(xdotool getactivewindow getwindowname)" #Window title
-hc keybind $Mod-F1 spawn ~/.config/sxhkd/status_notif.sh --hlwm #hlwm status
-hc keybind $Mod-F2 spawn ~/.config/sxhkd/status_notif.sh --calendar #calendar status
-hc keybind $Mod-F3 spawn ~/.config/sxhkd/status_notif.sh --audio #audio status
-hc keybind $Mod-F4 spawn ~/.config/sxhkd/status_notif.sh --brightness #brightness status
-hc keybind $Mod-F5 spawn ~/.config/sxhkd/status_notif.sh --battery #battery status
-hc keybind $Mod-F6 spawn ~/.config/sxhkd/status_notif.sh --internet #internet status
-hc keybind $Mod-F7 spawn ~/.config/sxhkd/status_notif.sh --task #taskwarrior status
-hc keybind $Mod-F11 spawn ~/.config/sxhkd/status_notif.sh --simple #Simple status
-hc keybind $Mod-F12 spawn ~/.config/sxhkd/status_notif.sh --full #Full status
+hc keybind $Mod-F1 spawn status_notif.sh --hlwm #hlwm status
+hc keybind $Mod-F2 spawn status_notif.sh --calendar #calendar status
+hc keybind $Mod-F3 spawn status_notif.sh --audio #audio status
+hc keybind $Mod-F4 spawn status_notif.sh --brightness #brightness status
+hc keybind $Mod-F5 spawn status_notif.sh --battery #battery status
+hc keybind $Mod-F6 spawn status_notif.sh --internet #internet status
+hc keybind $Mod-F7 spawn status_notif.sh --task #taskwarrior status
+hc keybind $Mod-F8 spawn status_notif.sh --bluetooth #bluetooth status
+hc keybind $Mod-F9 spawn status_notif.sh --redshift #redshift status
+hc keybind $Mod-F10 spawn status_notif.sh --vpn #vpn status
+hc keybind $Mod-F11 spawn status_notif.sh --extra #Status info for extra things
+hc keybind $Mod-F12 spawn status_notif.sh --simple #Simple status
+hc keybind $Mod-Shift-F12 status_notif.sh --full #Full status
+
+# dunst ctls
+hc keybind Control-space spawn dunstctl close #Close one dunst notification
+hc keybind Control-Shift-space spawn dunstctl close-all #Close all currently open dunst notifications
+hc keybind Control-grave spawn dunstctl history-pop #Open one dunst notification
 
 # Terminal/fzf utils
-hc keybind $Mod-Mod1-m spawn withlock LOCK-moji termite --name "splatmoji" -e "~/.config/sxhkd/moji" #Pick *moji
-hc keybind $Mod-Mod1-b spawn withlock LOCK-bluetooth termite --name "bluetooth" -e "~/.config/sxhkd/fzf-bluetooth" #Bluetooth
-hc keybind $Mod-space spawn withlock LOCK-todo termite --name "fzfnotes" -e "~/.config/sxhkd/fzf-notes" #Quick notes
-hc keybind $Mod-z spawn ~/.config/sxhkd/fzf-find #File search and directory opener
-hc keybind $Mod-Shift-z spawn withlock LOCK-google termite --name "google" -e "~/.config/sxhkd/goog.sh" #fzf-google
-hc keybind $Mod-Mod1-h spawn withlock LOCK-navi termite --name "navi" -e "\"navi --fzf-overrides '--reverse  --color fg:7,bg:-1,hl:6,fg+:6,bg+:-1,hl+:6 --color info:2,prompt:1,spinner:5,pointer:5,marker:3,header:8'\"" #Interactive cheatsheet
-hc keybind $Mod-x spawn withlock LOCK-clip ~/.config/sxhkd/fzf-clip #Greenclip
-hc keybind $Mod-a spawn withlock LOCK-help termite --name "help" -e "~/.config/herbstluftwm/scripts/key_help.sh" #Keybinding help
+hc keybind $Mod-Mod1-m spawn withlock LOCK-moji urxvtdc -name "splatmoji" -e "moji" #Pick *moji
+hc keybind $Mod-Mod1-b spawn withlock LOCK-bluetooth urxvtdc -name "bluetooth" -e "fzf-bluetooth" #Bluetooth
+hc keybind $Mod-space spawn withlock LOCK-todo urxvtdc -name "fzfnotes" -e "fzf-notes" #Quick notes
+hc keybind $Mod-z spawn fzf-find #File search and directory opener
+hc keybind $Mod-Shift-z spawn withlock LOCK-google urxvtdc -name "google" -e "goog.sh" #fzf-google
+hc keybind $Mod-Mod1-h spawn withlock LOCK-navi urxvtdc -name "navi" -e "\"navi --fzf-overrides '--reverse  --color fg:7,bg:-1,hl:6,fg+:6,bg+:-1,hl+:6 --color info:2,prompt:1,spinner:5,pointer:5,marker:3,header:8'\"" #Interactive cheatsheet
+hc keybind $Mod-x spawn withlock LOCK-clip fzf-clip #Greenclip
+hc keybind $Mod-a spawn withlock LOCK-help urxvtdc -name "help" -e "~/.config/herbstluftwm/scripts/key_help.sh" #Keybinding help
+hc keybind $Mod-y spawn withlock LOCK-youtube fzf-tube.sh #Fuzzy search for youtube vids
 
 # Drop down/scratchpad
-hc keybind $Mod-d spawn tdrop -m -x 15% -y 62 -s Dropdown -h 60% -w 69%  termite --name dropdown #Main dropdown
-hc keybind $Mod-Shift-d spawn tdrop -m -w 69% -h 60% -x 15% -y 62 current #Toggle focused window as dropdown
-hc keybind $Mod-Control-d and . spawn tdrop --clear current . spawn notify-send -u normal -t 3000 " Current dropdown window cleared" #Clear current dropdown window
+#hc keybind $Mod-d spawn tdrop -m -x 15% -y 62 -h 60% -w 70% -s Dropdown  urxvt -name dropdown #Main dropdown
+hc keybind $Mod-d spawn withlock LOCK-dropdown scrthpd.sh #Main Dropdown
+#hc keybind $Mod-Shift-d spawn tdrop -m -w 69% -h 60% -x 15% -y 62 current #Toggle focused window as dropdown
+#hc keybind $Mod-Control-d and . spawn tdrop --clear current . spawn notify-send -u normal -t 3000 " Current dropdown window cleared" #Clear current dropdown window
 
 # Volume/Brightness keys
-hc keybind XF86MonBrightnessUp spawn ~/.config/sxhkd/bright up #Increase brightness
-hc keybind XF86MonBrightnessDown spawn ~/.config/sxhkd/bright down #Decrease brightness
-hc keybind XF86AudioRaiseVolume spawn ~/.config/sxhkd/vol pulse up #Increase Volume
-hc keybind XF86AudioLowerVolume spawn ~/.config/sxhkd/vol pulse down #Decrease volume
-hc keybind XF86AudioMute spawn ~/.config/sxhkd/vol pulse mute #Mute audio
-hc keybind $Mod-XF86AudioRaiseVolume spawn ~/.config/sxhkd/vol pulsemic up #Increase mic volume
-hc keybind $Mod-XF86AudioLowerVolume spawn ~/.config/sxhkd/vol pulsemic down #Decrease mic volume
-hc keybind $Mod-XF86AudioMute spawn ~/.config/sxhkd/vol pulsemic mute #mute mic
+hc keybind XF86MonBrightnessUp spawn bright up #Increase brightness
+hc keybind XF86MonBrightnessDown spawn bright down #Decrease brightness
+hc keybind XF86AudioRaiseVolume spawn vol pulse up #Increase Volume
+hc keybind XF86AudioLowerVolume spawn vol pulse down #Decrease volume
+hc keybind XF86AudioMute spawn vol pulse mute #Mute audio
+hc keybind $Mod-XF86AudioRaiseVolume spawn vol pulsemic up #Increase mic volume
+hc keybind $Mod-XF86AudioLowerVolume spawn vol pulsemic down #Decrease mic volume
+hc keybind $Mod-XF86AudioMute spawn vol pulsemic mute #mute mic
 
 # Media Keys
 hc keybind XF86AudioPrev spawn playerctl previous #Previous track
@@ -86,38 +96,41 @@ hc keybind XF86AudioStop spawn playerctl stop #Stop track
 #hc keybind Control-Shift-space spawn ~/.config/herbstluftwm/eww_notif_hist.sh -c #Exit out of notification history
 
 # Window scripts
-hc keybind $Mod-w spawn withlock LOCK-window termite --name window -e ~/.config/herbstluftwm/scripts/wselect.sh #Select and focus window
-hc keybind $Mod-Shift-w spawn withlock LOCK-bwindow termite --name window -e "~/.config/herbstluftwm/scripts/bringwselect.sh" #Bring selected window to current tag
+hc keybind $Mod-w spawn withlock LOCK-window urxvtdc -name window -e ~/.config/herbstluftwm/scripts/wselect.sh #Select and focus window
+hc keybind $Mod-Shift-w spawn withlock LOCK-bwindow urxvtdc -name window -e "~/.config/herbstluftwm/scripts/bringwselect.sh" #Bring selected window to current tag
 hc keybind $Mod-m spawn ~/.config/herbstluftwm/scripts/maximize.sh #Toggle focused window as maximized window
 hc keybind $Mod-Shift-m spawn ~/.config/herbstluftwm/scripts/maximize.sh grid #window selection for focused tag
 
 # Hide/unhide windows
 hc keybind $Mod-h set_attr clients.focus.minimized toggle #Hide window
-hc keybind $Mod-Shift-h spawn withlock LOCK-window termite --name "window" -e "~/.config/herbstluftwm/scripts/hidden_list.sh" #Unminimize all windows on current tag 
-hc keybind $Mod-Control-h spawn withlock LOCK-window termite --name "window" -e "~/.config/herbstluftwm/scripts/bring_hidden.sh" #Unminimize selected window and bring to current tag
+hc keybind $Mod-Shift-h spawn withlock LOCK-window urxvtdc -name "window" -e "~/.config/herbstluftwm/scripts/hidden_list.sh" #Unminimize all windows on current tag
+hc keybind $Mod-Control-h spawn withlock LOCK-window urxvtdc -name "window" -e "~/.config/herbstluftwm/scripts/bring_hidden.sh" #Unminimize selected window and bring to current tag
 
 # clight controls
-hc keybind $Mod-bracketleft and . spawn busctl --expect-reply=false --user call org.clight.clight /org/clight/clight org.clight.clight Capture "bb" false false . spawn notify-send -t 3000 -u normal "Backlight recalibrated" #Recalibrate backlight
-hc keybind $Mod-Shift-bracketleft spawn ~/.config/sxhkd/toggle_backcalib.sh #Toggle backlight calibration
-hc keybind $Mod-bracketright spawn ~/.config/sxhkd/toggle_dimmer.sh #Toggle screen dimmer
-hc keybind $Mod-Shift-bracketright spawn ~/.config/sxhkd/toggle_redshift.sh #Toggle redshift
-hc keybind $Mod-Shift-backslash spawn ~/.config/sxhkd/toggle_clight_movie_mode.sh #Toggle "Movie mode"
+#hc keybind $Mod-bracketleft and . spawn busctl --expect-reply=false --user call org.clight.clight /org/clight/clight org.clight.clight Capture "bb" false false . spawn notify-send -t 3000 -u normal "Backlight recalibrated" #Recalibrate backlight
+#hc keybind $Mod-Shift-bracketleft spawn toggle_backcalib.sh #Toggle backlight calibration
+#hc keybind $Mod-bracketright spawn toggle_dimmer.sh #Toggle screen dimmer
+#hc keybind $Mod-Shift-bracketright spawn toggle_redshift.sh #Toggle redshift
+#hc keybind $Mod-Shift-backslash spawn toggle_clight_movie_mode.sh #Toggle "Movie mode"
 
 # Misc
 hc keybind $Mod-Mod1-c spawn xdotool mousemove --window $(herbstclient attr tags.focus.focused_client.winid) --polar 0 0 #Teleport mouse to focus window
-hc keybind Print spawn ~/.config/sxhkd/prtscr #Print Screen
-hc keybind $Mod-Print spawn ~/.config/sxhkd/prtregion #Print region
-hc keybind $Mod-Mod1-p spawn ~/.config/sxhkd/.caffeine.sh #Toggle caffeine
-hc keybind $Mod-Shift-a spawn termite -e "nvim /home/barbarossa/.config/herbstluftwm/autostart" #edit config file
-hc keybind $Mod-b spawn udiskie-mount -a #Unmount all drives
+hc keybind Print spawn prtscr #Print Screen
+hc keybind $Mod-Print spawn prtregion #Print region
+hc keybind $Mod-bracketright spawn toggle_redshift.sh #Toggle Redshift
+hc keybind $Mod-bracketleft spawn caffeine.sh #Toggle caffeine
+hc keybind $Mod-Shift-a spawn urxvtdc -e fish -c  'nvim /home/barbarossa/.config/herbstluftwm/autostart' #edit config file
+#hc keybind $Mod-b spawn udiskie-umount -a #Unmount all drives
+hc keybind $Mod-b spawn urxvtdc -name bashmount -e bashmount
 hc keybind $Mod-Control-r spawn mp4 #Record in mp4
 hc keybind $Mod-Control-Shift-r spawn gif #Record in gif
 #hc keybind $Mod-Shift-x spawn xdo id | pidswallow -t #toggle swallowing
-hc keybind $Mod-Shift-p spawn ~/.config/sxhkd/togglepicom #Toggle picom
+hc keybind $Mod-Shift-p spawn togglepicom #Toggle picom
 hc keybind $Mod-Shift-c spawn colorpicker.sh #Colorpicker
-hc keybind $Mod-j spawn ~./config/sxhkd/spotnotif #What's playing?
+hc keybind $Mod-j spawn spotnotif #What's playing?
 #hc keybind $Mod-n spawn ~/.config/herbstluftwm/toggle_eww_notifs.sh #Toggle notifications
 hc keybind $Mod-Shift-b spawn ~/.config/herbstluftwm/toggle_focus.sh & #Toggle bar
+hc keybind Mod1-o spawn clip_link.sh #Open current clipboard with linkhandler
 
 # basic movement
 # focusing clients
@@ -159,7 +172,8 @@ for i in "${!tag_names[@]}" ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
     if [ -n "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i" #Focus tag at number
+        #hc keybind "$Mod-$key" use_index "$i" #Focus tag at number
+        hc keybind "$Mod-$key" substitute PRE tags.focus.index chain + use_index "$i" + or , compare tags.focus.index != PRE , use_previous #Focus tag at number
         hc keybind "$Mod-Shift-$key" move_index "$i" #Move focus window to tag at number
         #hc keybind "$Mod-Control-$key" move_and_follow "$i"
     fi
@@ -202,10 +216,10 @@ hc keybind $Mod-i jumpto urgent #Jump to urgent
 hc set hide_covered_windows false
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-hc set frame_border_active_color '#323d43'
-hc set frame_border_normal_color '#323d43'
-hc set frame_bg_normal_color '#323d43'
-hc set frame_bg_active_color '#323d43'
+hc set frame_border_active_color '#f8f0dc'
+hc set frame_border_normal_color '#f8f0dc'
+hc set frame_bg_normal_color '#f8f0dc'
+hc set frame_bg_active_color '#f8f0dc'
 hc set frame_border_width 10
 hc set always_show_frame 0
 hc set frame_bg_transparent 0
@@ -215,24 +229,24 @@ hc set frame_padding 2
 hc set focus_follows_mouse 1
 hc set snap_gap 12
 
-hc attr theme.active.color '#a7c080'
-hc attr theme.normal.color '#868d80'
-hc attr theme.urgent.color '#e68183'
+hc attr theme.active.color '#8da101'
+hc attr theme.normal.color '#999f93'
+hc attr theme.urgent.color '#f85552'
 hc attr theme.border_width 2
 hc attr theme.inner_width 0
 hc attr theme.floating.border_width 12
 hc attr theme.floating.inner_width 2
 hc attr theme.floating.outer_width 10
-hc attr theme.floating.border_color '#323d43'
-hc attr theme.floating.active.inner_color '#a7c080'
-hc attr theme.floating.normal.inner_color '#868d80'
-hc attr theme.floating.outer_color '#323d43'
+hc attr theme.floating.border_color '#f8f0dc'
+hc attr theme.floating.active.inner_color '#8da101'
+hc attr theme.floating.normal.inner_color '#999f93'
+hc attr theme.floating.outer_color '#f8f0dc'
 #hc attr theme.active.inner_color '#3E4A00'
 #hc attr theme.active.outer_color '#3E4A00'
-hc attr theme.background_color '#323d43'
+hc attr theme.background_color '#f8f0dc'
 #hc attr theme.title_height 9
-hc attr theme.title_font 'spectrum berry'
-hc attr theme.title_color '#323d43'
+hc attr theme.title_font 'berry'
+hc attr theme.title_color '#f8f0dc'
 hc attr theme.floating.title_height 0
 #To hide frame at startup
 hc set frame_active_opacity 0
@@ -240,7 +254,7 @@ hc set frame_active_opacity 0
 hc set window_gap -2
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 0
-hc set focus_stealing_prevention 0
+hc set focus_stealing_prevention false
 hc set mouse_recenter_gap 0
 hc set focus_crosses_monitor_boundaries 1
 hc set swap_monitors_to_get_tag 0
@@ -252,33 +266,36 @@ hc pad 0 44 4 4 4
 hc unrule -F
 hc rule instance=dropdown floating=on focus=on
 #hc rule instance=cmatrixterm fullscreen=on
-hc rule instance=applauncher floating=on floatplacement=center focus=on
-hc rule instance=greenclip floating=on floatplacement=center focus=on
-hc rule instance=findFiles floating=on floatplacement=center focus=on
-hc rule instance=splatmoji floating=on floatplacement=center focus=on
-hc rule instance=powermenu floating=on floatplacement=center focus=on
-hc rule instance=fzfnotes floating=on floatplacement=center focus=on
-hc rule instance=google floating=on floatplacement=center focus=on
-hc rule instance=bluetooth floating=on floatplacement=center focus=on
-hc rule instance=navi floating=on floatplacement=center focus=on
-hc rule instance=bashmount floating=on floatplacement=center focus=on
-hc rule instance=window floating=on floatplacement=center focus=on
+hc rule instance=applauncher floating=on floatplacement=center focus=on floating_geometry=406x504 hook=always_focus
+hc rule instance=greenclip floating=on floatplacement=center focus=on floating_geometry=688x400 hook=always_focus
+hc rule instance=findFiles floating=on floatplacement=center focus=on floating_geometry=610x647 hook=always_focus
+hc rule instance=splatmoji floating=on floatplacement=center focus=on floating_geometry=520x400 hook=always_focus
+hc rule instance=powermenu floating=on floatplacement=center focus=on floating_geometry=280x309 hook=always_focus
+hc rule instance=fzfnotes floating=on floatplacement=center focus=on  hook=always_focus
+hc rule instance=google floating=on floatplacement=center focus=on hook=always_focus
+hc rule instance=bluetooth floating=on floatplacement=center focus=on floating_geometry=268x270 hook=always_focus
+hc rule instance=navi floating=on floatplacement=center focus=on hook=always_focus
+hc rule instance=youtube floating=on floatplacement=center focus=on floating_geometry=736x491 hook=always_focus
+hc rule instance=window floating=on floatplacement=center focus=on floating_geometry=370x400 hook=always_focus
+hc rule instance=downloads floating=on floatplacement=center focus=on hook=always_focus
+hc rule instance=qute-pass floating=on floatplacement=center focus=on floating_geometry=468x270 hook=always_focus
 hc rule class=Sxiv floating=on floatplacement=center focus=on
 hc rule class=mpv floating=on floatplacement=center focus=on
-hc rule instance=help floating=on floatplacement=center focus=on
+hc rule instance=help floating=on floatplacement=center focus=on floating_geometry=636x491 hook=always_focus
+hc rule instance=bashmount floating=on floatplacement=center focus=on floating_geometry=565x490 hook=always_focus
 hc rule focus=on # normally focus new clients
 # give focus to most common terminals
 #hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-hc rule class=firefox tag=1
+hc rule class=qutebrowser tag=1
 hc rule title=neomutt tag=2
 hc rule title=calcurse tag=2
 hc rule title=taskwarrior-tui tag=2
 hc rule class=Zotero tag=3
-hc rule title=joplin tag=3
-hc rule title=weechat tag=6
+#hc rule title=joplin tag=3
+hc rule title=irssi tag=6
 hc rule instance=Spotify tag=7
 hc rule instance=vim tag=4
 hc rule class=zoom tag=8
@@ -289,38 +306,49 @@ hc unlock
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # Default layout states
-~/.config/herbstluftwm/scripts/loadstate.sh < ~/.config/herbstluftwm/default.layout &
+#~/.config/herbstluftwm/scripts/loadstate.sh < ~/.config/herbstluftwm/default.layout &
 
 # Non hlwm settings
-#xset s 420 179
+xset s 180 #with xss-lock, dim screen after 3 minutes
+xset dpms 300 #with xss-lock, blank and lock screen after a total of 5 mins (2 mins after dim)
 xset r rate 440 50
 xmodmap -e "keysym Menu = Super_R" &
+xset +fp ~/.fonts/misc
 numlockx on &
 
 if hc silent new_attr bool my_not_first_autostart ; then
     # Autostart
     ~/.config/herbstluftwm/thorsten_tag_empty.sh &
+    distraction_mode_check.sh &
     #picom &
     batsignal.sh &
-    ~/.config/polybar/launch.sh &
-    /usr/lib/geoclue-2.0/demos/agent &
+    #~/.config/polybar/launch.sh &
+    bar.sh &
     /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+    /usr/lib/geoclue-2.0/demos/agent &
     unclutter &
     dunst &
-    udiskie &
-    ~/.config/bspwm/localserver &
-    xss-lock -l -- lockscreen.sh & #~/.config/bspwm/tuilock &
+    xss-lock -n dim-screen.sh -l -- lockscreen.sh & #~/.config/bspwm/tuilock &
+    idle.sh 10 "systemctl hibernate" &
     greenclip daemon &
-    ~/.config/bspwm/pulse-volume-watcher.py | xob -s volume &
-    ~/.config/herbstluftwm/brightness-watcher.py | xob -s backlight &
+    xob_startup.sh &
     libinput-gestures-setup start &
     syncthing -no-browser &
-    ~/.config/sxhkd/weather.sh &
-    clight --conf-file=/home/barbarossa/.config/clight.conf &
+    weather.sh &
+    gitwatch -r pi@192.168.0.18:/mnt/fd1/repos/acer-dotfiles /home/barbarossa/Public/acer-dotfiles &
+    sunpaper.sh &
+    redshift &
+    #emacs --daemon &
+    urxvtd -o -f -q &
+    ~/.config/herbstluftwm/scripts/always_focus.sh &
 
     # Need a delay for w/e reason
     sleep 3
-    synergyc 192.168.0.16 &
+    if [[ "$(nmcli -g IN-USE,SSID d wifi list | grep "*" | cut -d':' -f2)" != "Ollies_Network" ]]; then
+        nmcli c u acer
+    else
+        synergyc 192.168.0.16 &
+    fi
 fi
 
 # do multi monitor setup here, e.g.:

@@ -6,7 +6,7 @@
 # So that sxhkd can work with fish
 export SXHKD_SHELL='/usr/bin/bash'
 
-# Something about improved firefox?
+# Needed to enable VAAPI support in firefox (better video decode)
 export MOZ_X11_EGL=1
 
 #Originally for Zathura plugin, but now for anything in here (I SHOULD PUT SCRIPTS HERE NOT IN /usr/bin!!!)
@@ -17,10 +17,14 @@ export REC_DIR="/home/barbarossa/Videos/"
 export SCR_DIR="/home/barbarossa/Pictures/Screenshots/"
 
 #Default editor
-export EDITOR=/usr/bin/nvim
+#export EDITOR="/usr/bin/emacsclient -nw"
+export EDITOR="/usr/bin/nvim"
 
 #Default browser for linkhandle script in newsboat
-export BROWSER=/usr/bin/firefox
+export BROWSER=/usr/bin/qutebrowser
+
+# Default terminal
+export TERMINAL=/usr/bin/urxvt
 
 # SSH keys with pam-gnupg
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -28,5 +32,11 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # Terminal command for rifle (file finder script)
 #export TERMCMD="/usr/local/bin/termite -e"
 
+# To get bumblebee and tlp to play nice
+export RUNTIME_PM_DRIVER_BLACKLIST="nvidia" 
+
+# Colorize howdoi output
+HOWDOI_COLORIZE=1
+
 #Uniform Qt and GTK appearance
-#export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME=qt5ct

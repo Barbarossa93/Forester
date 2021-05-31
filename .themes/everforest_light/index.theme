@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=everforest_light
+Comment=Everforest dark scheme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=elkowars_gruvbox
+MetacityTheme=elkowars_gruvbox
+IconTheme=gnome
+CursorTheme=DMZ-Black
+ButtonLayout=menu:minimize,maximize,close

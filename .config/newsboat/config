@@ -2,6 +2,7 @@ auto-reload yes
 external-url-viewer "urlview"
 notify-always yes
 notify-program notify-send
+ignore-mode "display"
 
 bind-key j down
 bind-key k up
@@ -26,7 +27,7 @@ color listnormal cyan default
 color listfocus black yellow standout bold
 color listnormal_unread blue default
 color listfocus_unread yellow default bold
-color info red black bold
+color info cyan black bold
 color article white default bold
 
 #browser "firefox %u"
@@ -39,8 +40,20 @@ macro v set browser "setsid -f mpv" ; open-in-browser ; set browser linkhandler
 macro w set browser "lynx" ; open-in-browser ; set browser linkhandler
 macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
 
-highlight all "---.*---" yellow
-highlight feedlist ".*(0/0))" black
+# feedlist format and colours
+#feedlist-format "%?l?├──╼ %t &├───%t?"
+feedlist-format "%?l?│%4i %n %8u (%T) %t &├─────────╼ %t?"
+
+#highlight feedlist ".*─────.*" green
+
+highlight feedlist "[││]" green default bold
+highlight feedlist "├─.*" green default bold
+# article format and colours
+#articlelist-format "%?T? │ %2i %f  %t?"
+articlelist-format " │ %2i  %t"
+
+#highlight all "---.*---" yellow
+#highlight feedlist ".*(0/0))" black
 highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
 highlight article "(^Link:.*|^Date:.*)" default default
 highlight article "https?://[^ ]+" green default

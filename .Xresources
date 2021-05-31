@@ -1,90 +1,130 @@
-Xcursor.theme: pixelfun3-eclipse
+!Xcursor.theme: pixelfun3
 
 Xft.dpi:                        96
 Xft.antialias:                  1
 Xft.autohint:                   0
 Xft.hinting:                    1
 Xft.hintstyle:                  hintfull
-!Xft.rgba:                       rgb
+Xft.rgba:                       rgb
 Xft.lcdfilter:                  lcddefault
 
-#define FONT spectrum berry
+#define BTMP_FONT -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
+#define BTMP_BLD_FONT -spectrum-berry-bold-r-normal--11-80-75-75-m-50-iso10646-1
 #define ICON Cozette
-#define EMOJI Symbola
-#define NERD_FONT FiraCode Nerd Font Mono
-#define FONT_SIZE 8
-#define ICON_SIZE 8
-#define EMOJI_SIZE 8
-#define NERD_SIZE 8
-URxvt.font: xft:FONT:style=medium:size=FONT_SIZE:antialias=true, xft:ICON:size=ICON_SIZE:antialias=false, xft:NERD_FONT:size=NERD_SIZE:antialias=true, xft:EMOJI:size=EMOJI_SIZE:antialias=true
-!URxvt.boldFont: xft:FONT:style=Bold:size=FONT_SIZE:antialias=true, xft:ICON:size=ICON_SIZE:antialias=false, xft:NERD_FONT:size=NERD_SIZE:antialias=true, xft:EMOJI:size=EMOJI_SIZE:antialias=true
+#define MORE_ICONS SijiPlus
+#define EMOJI Twemoji
+#define CJK Kochi Gothic
+#define NERD_FONT Hack Nerd Font Mono
+#define FONT_SIZE 9
+#define ICON_SIZE 9
+#define EMOJI_SIZE 7
+#define NERD_SIZE 7.5
+
+URxvt.font: BTMP_FONT, xft:ICON:size=ICON_SIZE:antialias=false, xft:MORE_ICONS:size=ICON_SIZE:antialias=false, xft:CJK:size=FONT_SIZE:antialias=true, xft:NERD_FONT:size=NERD_SIZE:antialias=true:minspace=false, xft:EMOJI:size=EMOJI_SIZE:antialias=true
+URxvt.boldFont: BTMP_BLD_FONT, xft:ICON:size=ICON_SIZE:antialias=false, xft:MORE_ICONS:size=ICON_SIZE:antialias=false, xft:CJK:size=FONT_SIZE:antialias=true, xft:NERD_FONT:size=NERD_SIZE:antialias=true:minspace=false, xft:EMOJI:size=EMOJI_SIZE:antialias=true
 !URxvt.italicFont: xft:FONT:style=Italic:size=FONT_SIZE:antialias=true, xft:ICON:size=ICON_SIZE:antialias=false, xft:NERD_FONT:size=NERD_SIZE:antialias=true, xft:EMOJI:size=EMOJI_SIZE:antialias=true
 !URxvt.boldItalicFont: xft:FONT:style=Bold Italic:size=FONT_SIZE:antialias=true, xft:ICON:size=ICON_SIZE:antialias=false, xft:NERD_FONT:size=NERD_SIZE:antialias=true, xft:EMOJI:size=EMOJI_SIZE:antialias=true
 
 !Colors
-!#include "/home/barbarossa/light"
 #include "/home/barbarossa/Public/neat-things/colorschemes/forest-night-xresources/forest-night"
 
-URxvt.depth:                    32
-URxvt*lineSpace:                1
-URxvt*letterSpace:		        0
+URxvt.depth:                    24
+URxvt*lineSpace:                0
+URxvt*letterSpace:            0
 URxvt.iso14755:                 false
 URxvt.iso14755_52:              false
-URxvt*geometry:                 184x44
+URxvt*geometry:                 80x24
 URxvt.scrollBar:                false
 URxvt*loginShell:               true
 URxvt.internalBorder:           44
+URxvt.skipBuiltinGlyphs:        false
 
-URxvt.perl-ext:	 		default,matcher,vtwheel,resize-font
+URxvt.perl-ext:         default,matcher,selection-to-clipboard,keyboard-select,tabbedex,searchable-scrollback,newterm
+!,resize-font,osc52
 URxvt.url-launcher:             linkhandler
-URxvt.matcher.button: 		1
-URxvt.keysym.M-r:    		perl:matcher:last
-URxvt.keysym.M-l:   		perl:matcher:list
-URxvt.keysym.M-e:		perl:matcher:select
-URxvt.saveLine:			10000
-URxvt.cursorBlink: 		true
-URxvt.cursorUnderline: 		true
+URxvt.matcher.button:         1
+URxvt.keysym.M-r:           perl:matcher:last
+URxvt.keysym.S-C-U:           perl:matcher:list
+URxvt.keysym.M-l:           perl:matcher:select
+URxvt.saveLine:         10000
+URxvt.cursorBlink:        true
+URxvt.cursorUnderline:    true
 
-URxvt*inheritPixmap:    	false
-URxvt*transparent:      	false
+URxvt*inheritPixmap:          false
+URxvt*transparent:            false
+URxvt.termName:                 rxvt-unicode-256color
 
 ! do not scroll with output
-URxvt*scrollTtyOutput: false
-
+URxvt*scrollTtyOutput:          false
 ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-URxvt*scrollWithBuffer: true
-
+URxvt*scrollWithBuffer:         true
 ! scroll back to the bottom on keypress
-URxvt*scrollTtyKeypress: true
+URxvt*scrollTtyKeypress:        true
+
+! Clear scrollback
+URxvt.keysym.Control-l: command:\033c
 
 ! Resize font keybindings
-URxvt.keysym.C-minus:     resize-font:smaller
-URxvt.keysym.C-plus:      resize-font:bigger
-URxvt.keysym.C-equal:     resize-font:reset
-URxvt.keysym.C-question:  resize-font:show
-URxvt.resize-font.step: 0.5
+!URxvt.keysym.C-minus:     resize-font:smaller
+!URxvt.keysym.C-plus:      resize-font:bigger
+!URxvt.keysym.C-equal:     resize-font:reset
+!URxvt.keysym.C-question:  resize-font:show
+!URxvt.resize-font.step: 0.5
 
-URxvt.keysym.Shift-Up: command:\033]720;1\007
-URxvt.keysym.Shift-Down: command:\033]721;1\007
+! open new term in same directory
+URxvt.keysym.Control-Shift-T:   perl:newterm
 
-URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
+! Incremental scroll
+URxvt.keysym.Shift-Up:          command:\033]720;1\007
+URxvt.keysym.Shift-Down:        command:\033]721;1\007
 
-! xterm settings
+! Helps scrolling in alt screens
+URxvt.secondaryScreen:          1
+URxvt.secondaryScroll:          0
+URxvt.secondaryWheel:           1
 
+! Re-bind copy and paste shortcuts
+URxvt.keysym.Control-Meta-c:    builtin-string:
+URxvt.keysym.Control-Meta-v:    builtin-string:
+
+URxvt.keysym.Shift-Control-V:   eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:   eval:selection_to_clipboard
+
+!keyboard-select bindings/settings
+URxvt.keyboard-select.clipboard: true
+URxvt.keysym.C-S-Escape:        perl:keyboard-select:activate
+URxvt.keysym.Control-Shift-S:   perl:keyboard-select:search
+
+! Tabbedex settings/bindings
+URxvt.tabbedex.autohide:        true
+!URxvt.tabbed.reopen-on-close: yes
+URxvt.tabbedex.tabbar-fg:       2
+URxvt.tabbedex.tabbar-bg:       0
+URxvt.tabbedex.tab-fg:          3
+URxvt.tabbedex.tab-bg:          0
+
+URxvt.tabbedex.no-tabbedex-keys: true
+URxvt.keysym.Control-t:         perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+URxvt.keysym.Control-Shift-R:   perl:tabbedex:rename_tab
+
+!!! xterm settings
 xterm.vt100.termName: xterm-256color
 xterm.vt100.scaleHeight: 1.0
 XTerm.vt100.geometry: 80x32
 xterm.vt100.internalBorder: 44
 xterm.vt100.borderWidth: 0
-! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+! every shell is a login shell by default (for inclusion of all necessary environment variables)
 XTerm*loginshell: true
 XTerm*savelines: 16384
 XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-!XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.metaSendsEscape: true
 
 xterm.vt100.utf8: true
-XTerm.vt100.locale: true
+XTerm.vt100.locale: false
 xterm.vt100.scrollBar: false
 xterm.vt100.cursorBlink: true
 !xterm.vt100.cursorUnderline: true
@@ -95,29 +135,52 @@ xterm.vt100.wideChars: true
 xterm.vt100.visualBell: false
 xterm.vt100.forceBoxChars: true
 xterm.vt100.font-linedrawing: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
 *VT100*translations: #override Shift <Btn1Up>: exec-formatted("linkhandler '%t'", PRIMARY)
-
 
 xterm.vt100.translations: #override \n\
     Shift Ctrl <KeyPress> v:insert-selection(CLIPBOARD) \n\
     Shift Ctrl <KeyPress> c:select-set(CLIPBOARD)
 
-XTerm*faceSize: 10
-xterm.vt100.faceName: monospace
-!xterm.vt100.faceNameDoublesize: Symbola:antialias=true
-!xterm.vt100.wideFont: FiraCode Nerd Font Mono:size=9:antialias=true
-
+XTerm*limitFontsets: 50
+XTerm*faceSize: 9
+XTerm*faceName: xft:berry
+xterm.vt100.faceNameDoublesize: Kochi Gothic, Symbola
+xterm.vt100.assumeAllChars: true
+!xterm.vt100.wideFont: Symbola
+XTerm*cjkWidth: false
 ! stop output to terminal from jumping down to bottom of scroll again
 XTerm*scrollTtyOutput: false
 
 ! xst configs
-st.font: spectrum berry:pixelsize=12:antialias=false:autohint=false;,Cozette:pixelsize=12:antialias=false:autohint=false;,Twemoji:pixelsize=10:antialias=true:autohint=true;,FiraCode Nerd Font Mono:pixelsoze=10:antialias=true:autohint=true
-st.alpha: 1
+!st.font: monospace:pixelsize=12:antialias=false:autohint=true
+!st.alpha: 1
+!st.borderpx: 44
+!st.borderless: 1
+!st.cursorshape: 4
+!st.disablebold: 0
+!st.disableitalics: 1
+!st.boxdraw: 1
+!st.boxdraw_braille: 1
+!st.termname: xterm-24bit
+!st.cursorblinkstyle:  0
+!st.cursorblinkontype: 1
+!st.scrollrate:  1
+!st.blinktimeout:      600
+!st.bellvolume:        0
+
+
+! st-flexipatch configs
+!st.font: monospace:pixelsize=12
+!st.shell: /usr/bin/fish
+!st.minlatency:
+!st.maxlatency:
+!st.blinktimeout: 750
+!st.bell.volume:
+st.tabspaces: 4
+!st.borderperc: 820
 st.borderpx: 44
-st.cursorshape: 3
-st.disablebold: 1
-st.disableitalics: 1
-st.boxdraw: 1
-st.boxdraw_braille: 1
-st.chscale:           1.0
-st.cwscale:           1.0
+!st.termname: xterm-24bit
+!st.chscale:           1.0
+!st.cwscale:           1.0

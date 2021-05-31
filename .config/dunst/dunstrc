@@ -6,7 +6,8 @@
 #########################################                                        
 
 [colors]
-    foreground = "#d8caac"
+    foreground = "#5c6a72"
+    highlight = "#8da101"
 
 [global]
     ### Display ###
@@ -28,13 +29,13 @@
     outer_frame_width = 5
     corner_radius = 0
 
-    outer_frame_color = "#323d43"
+    outer_frame_color = "#f8f0dc"
     separator_color = auto
-    sort = yes
+    sort = no
     idle_threshold = 120
 
     ### Text ###
-    font = spectrum berry, tewii, waffle, Cozette, Kochi Gothic  8
+    font = berry, SijiPlus, Cozette, Kochi Gothic  8
     line_height = 1
 
     markup = full
@@ -63,13 +64,20 @@
     icon_position = left
     max_icon_size = 80
     #icon_path = /usr/share/icons/PineCone/48x48/status/:/usr/share/icons/PineCone/48x48/apps/:/usr/share/icons/PineCone/48x48/devices/
+    icon_path = /dev/null
 
     ### History ###
     sticky_history = yes
     history_length = 20
 
+    ### Progress ###
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+
     ### Misc/Advanced ###
-    dmenu = /usr/bin/termite -e fzf:
+    dmenu = /usr/bin/st -e fzf:
     browser = linkhandler
     always_run_script = false
     title = Dunst
@@ -80,27 +88,21 @@
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    #context = ctrl+shift+period
-    history = ctrl+grave
-
 [urgency_low]
-    background = "#323d43"
-    #foreground = "#89beba"
-    frame_color = "#89beba"
+    background = "#f8f0dc"
+    #foreground = "#3a94c5"
+    frame_color = "#3a94c5"
     timeout = 3
 
 [urgency_normal]
-    background = "#323d43"
-    frame_color = "#a7c080"
+    background = "#f8f0dc"
+    frame_color = "#8da101"
     timeout = 5
 
 [urgency_critical]
-    background = "#323d43"
-    #foreground = "#e68183"
-    frame_color = "#e68183"
+    background = "#f8f0dc"
+    #foreground = "#f85552"
+    frame_color = "#f85552"
     timeout = 0
 
 # vim: ft=conf

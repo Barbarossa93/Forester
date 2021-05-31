@@ -1,0 +1,25 @@
+[logout]
+list_cmd=echo -e 'logout\034logout\034↵  logout'
+preview_cmd=echo -e 'Logout of the bspwm session'
+launch_cmd=herbstclient quit
+
+[shutdown]
+list_cmd=echo -e 'shutdown\034shutdown\034⏻  shutdown'
+preview_cmd=echo -e 'Shutdown the computer'
+launch_cmd=shutdown -h now
+
+[lock]
+list_cmd=echo -e 'lock\034lock\034  lock'
+preview_cmd=echo -e 'Lock the current session'
+launch_cmd=xset s activate
+
+[reboot]
+list_cmd=echo -e 'reboot\034reboot\034  reboot'
+preview_cmd=echo -e 'Reboot the computer'
+launch_cmd=reboot
+
+[hibernate]
+list_cmd=echo -e 'hibernate\034hibernate\034⏼  hibernate'
+preview_cmd=echo -e 'Hibernate the computer'
+launch_cmd=systemctl hibernate
+

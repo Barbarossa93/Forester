@@ -8,7 +8,8 @@ fi
 confirmation() {
 	while true; do
 		for i in {1..4}; do
-			peaclock --config "./.peaclock/config/pomowork"
+			#peaclock --config "./.peaclock/config/pomowork"
+			tty-clock -p 1500 -c -C 1 -s -H -x && notify-send -u normal "Pomodoro\nWork period over!" && mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null
 			while true; do
 				read -e -p 'Continue? (y/n): ' confirm
 				if [[ $confirm == [yY] || $confirm == [yY][Ee][sS] ]]; then
@@ -16,7 +17,8 @@ confirmation() {
 						break
 					fi
 					unset confirm
-					peaclock --config "./.peaclock/config/pomoshortbreak"
+					#peaclock --config "./.peaclock/config/pomoshortbreak"
+					ttyclock -p 300 -c -C 4 -s -H -x && notify-send -u normal "Pomodoro\nShort break over!" && mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null
 					while true; do
 						read -e -p 'Continue? (y/n): ' confirm
 						if [[ $confirm == [yY] || $confirm == [yY][Ee][sS] ]]; then
@@ -45,7 +47,8 @@ confirmation() {
 		while true; do
 			if [[ $confirm == [yY] || $confirm == [yY][Ee][sS] ]]; then
 				unset confirm
-				peaclock --config "./.peaclock/config/pomolongbreak"
+				#peaclock --config "./.peaclock/config/pomolongbreak"
+				tty-clock -p 900 -c -C 6 -s -H -x && notify-send -u normal "Pomodoro\nLong break over!" && mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null
 				while true; do
 					read -e -p 'Continue? (y/n): ' confirm
 					if [[ $confirm == [yY] || $confirm == [yY][Ee][sS] ]]; then
@@ -78,7 +81,8 @@ no-confirmation() {
 	while true; do
 		for i in {1..4}; do
 			start=$SECONDS
-			peaclock --config "./.peaclock/config/pomowork"
+			#peaclock --config "./.peaclock/config/pomowork"	
+			tty-clock -p 1500 -c -C 1 -s -H -x && notify-send -u normal "Pomodoro\nWork period over!" && mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null
 			while true; do
 				duration=$(( SECONDS - start))
 				if [[ $duration -ge 1499 ]]; then
@@ -88,7 +92,8 @@ no-confirmation() {
 					unset start
 					unset duration
 					start=$SECONDS
-					peaclock --config "./.peaclock/config/pomoshortbreak"
+					#peaclock --config "./.peaclock/config/pomoshortbreak"	
+					tty-clock -p 300 -c -C 4 -s -H -x && notify-send -u normal "Pomodoro\nShort break over!" && mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null
 					while true; do
 						duration=$(( SECONDS - start ))
 						if [[ $duration -ge 299 ]]; then
@@ -111,7 +116,8 @@ no-confirmation() {
 			unset start	
 			unset duration
 			start=$SECONDS
-			peaclock --config "./.peaclock/config/pomolongbreak"
+			#peaclock --config "./.peaclock/config/pomolongbreak"
+			tty-clock -p 900 -c -C 6 -s -H -x && notify-send -u normal "Pomodoro\nLong break over!" && mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null
 			while true; do
 				duration=$(( SECONDS - start ))
 				if [[ $duration -ge 899 ]]; then

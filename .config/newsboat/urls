@@ -1,63 +1,36 @@
---------------------------
--------LINUX-NEWSFEEDS----
---------------------------
-https://distrowatch.com/news/dw.xml "~LINUX: DistroWatch" 
-http://lxer.com/module/newswire/headlines.rss "~LINUX: LXer"
-https://www.networkworld.com/category/linux/index.rss "~LINUX: Network World (Linux)"
-https://www.computerworld.com/index.rss "~LINUX: Computer World"
-https://www.phoronix.com/rss.php "~LINUX: Phoronix"
-https://www.zdnet.com/topic/linux/rss.xml "~LINUX: ZDNet (Linux)"
-https://itsfoss.com/feed/ "~LINUX: It's Foss"
-https://linux.softpedia.com/backend.xml "~LINUX: Softpedia (Linux)"
-https://opensource.com/feed "~LINUX: Opensource.com"
-https://betanews.com/feed/ "~LINUX: Beta News"
-http://feeds.feedburner.com/fossbytes "~LINUX: FossBytes"
-https://www.techrepublic.com/rssfeeds/topic/open-source/ "~LINUX: Tech Republic (Open Source)"
-http://feeds.arstechnica.com/arstechnica/open-source "~LINUX: ArsTechnica (Open Source)"
-https://hackaday.com/blog/feed/ "~LINUX: Hackaday"
-https://www.archlinux.org/feeds/news "~LINUX: Arch Linux News"
+Linux
+https://www.phoronix.com/rss.php "~Phoronix"
+https://www.archlinux.org/feeds/news "~Arch Linux News"
 
--------------------------
--------COMICS------------
--------------------------
-https://xkcd.com/atom.xml "~COMICS: xkcd"
-https://www.smbc-comics.com/comic/rss "~COMICS: Saturday Morning Breakfast Cereal"
-https://feeds.feedburner.com/Explosm "~COMICS: Cyanide & Happiness"
-https://www.penny-arcade.com/feed "~COMICS: Penny Arcade"
+Comics
+https://xkcd.com/atom.xml "~xkcd"
+https://www.smbc-comics.com/comic/rss "~Saturday Morning Breakfast Cereal"
+https://feeds.feedburner.com/Explosm "~Cyanide & Happiness"
+https://www.penny-arcade.com/feed "~Penny Arcade"
 
--------------------------
--------ASTRONOMY---------
--------------------------
-https://apod.nasa.gov/apod.rss "~ASTRO: APOD"
+Astronomy
+https://apod.nasa.gov/apod.rss "~APOD"
 
--------------------------
--------REDDIT------------
--------------------------
-https://www.reddit.com/r/linux.rss "~REDDIT: r/linux"
-https://www.reddit.com/r/commandline.rss "~REDDIT: r/commandline"
-https://www.reddit.com/r/vimporn.rss "~REDDIT: r/vimporn"
-https://www.reddit.com/r/vim.rss "~REDDIT: r/vim"
-https://www.reddit.com/r/unixporn.rss "~REDDIT: r/unixporn"
-https://www.reddit.com/r/unixart.rss "~REDDIT: r/unixart"
-https://www.reddit.com/r/bspwm.rss "~REDDIT: r/bspwm"
-https://www.reddit.com/r/archlinux.rss "~REDDIT: r/archlinux"
-https://www.reddit.com/r/FirefoxCSS.rss "~REDDIT: r/FirefoxCSS"
-https://www.reddit.com/r/Python.rss "~REDDIT: r/Python"
-https://www.reddit.com/r/emacs.rss "~REDDIT: r/emacs"
-https://www.reddit.com/r/startpages.rss "~REDDIT: r/startpages"
-https://www.reddit.com/r/ProgrammerHumor.rss "~REDDIT: r/ProgrammerHumor"
+Reddit
+https://www.reddit.com/r/linux.rss "~r/linux"
+https://www.reddit.com/r/commandline.rss "~r/commandline"
+https://www.reddit.com/r/vimporn.rss "~r/vimporn"
+https://www.reddit.com/r/vim.rss "~r/vim"
+https://www.reddit.com/r/unixporn.rss "~r/unixporn"
+https://www.reddit.com/r/unixart.rss "~r/unixart"
+https://www.reddit.com/r/bspwm.rss "~r/bspwm"
+https://www.reddit.com/r/archlinux.rss "~r/archlinux"
+https://www.reddit.com/r/FirefoxCSS.rss "~r/FirefoxCSS"
+https://www.reddit.com/r/Python.rss "~r/Python"
+https://www.reddit.com/r/emacs.rss "~r/emacs"
+https://www.reddit.com/r/startpages.rss "~r/startpages"
+https://www.reddit.com/r/ProgrammerHumor.rss "~r/ProgrammerHumor"
 
--------------------------
---------GITHUB-----------
--------------------------
-https://bandito.re/3e13cf7a-c57a-4fc9-8ecb-d87f5d982e68.atom "~GITHUB: Starred Repos"
+Github
+https://bandito.re/3e13cf7a-c57a-4fc9-8ecb-d87f5d982e68.atom "~Starred Repos"
 
--------------------------
---------YOUTUBE----------
--------------------------
-https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "~YOUTUBE: videogamedunkey"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCGca03sbLq7OUnXMdvRHyBQ "~YOUTUBE: michaelcthulu"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCmeds0MLhjfkjD_5acPnFlQ "~YOUTUBE: Giant Bomb"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "~YOUTUBE: BardicBroadcasts"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~YOUTUBE: Luke Smith"
-
+Youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "~videogamedunkey"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGca03sbLq7OUnXMdvRHyBQ "~michaelcthulu"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmeds0MLhjfkjD_5acPnFlQ "~Giant Bomb"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "~BardicBroadcasts"

@@ -1,9 +1,0 @@
-set auto-size on
-set seconds on
-date 'LONG BREAK'
-style active-fg 6
-style colon-fg 6
-mode timer
-timer-exec 'notify-send -u normal "Pomodoro\nLong break over!"; mpv --no-terminal ~/.peaclock/alert-work.mp3 &>/dev/null; pkill peaclock; stty sane'
-timer 00h:15m:00s
-timer start

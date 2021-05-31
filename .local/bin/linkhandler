@@ -7,6 +7,7 @@
 # otherwise it opens link in browser.
 
 # If no url given. Opens browser. For using script as $BROWSER.
+BROWSER="/home/barbarossa/.local/bin/qutebrowser"
 [ -z "$1" ] && { exit; }
 
 case "$1" in
@@ -19,7 +20,12 @@ case "$1" in
   *png|*png*|*jpg|*jpg*|*jpe|*jpe*|*jpeg|*jpeg*|*gif)
 		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*)
-		if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
-		#elif [ -z "$*" ]; then exit 0
-		else setsid $BROWSER "$1" >/dev/null 2>&1 & fi ;;
+		if [ -z "$*" ]; then
+			exit 1
+		else
+			setsid $BROWSER "$1" >/dev/null 2>&1 &
+			sleep 0.3
+			herbstclient jumpto urgent
+		fi
+		;;
 esac

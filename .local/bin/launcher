@@ -1,5 +1,5 @@
 #!/bin/sh
 
-xdotool getactivewindow windowsize 406 504 windowmove 753 285
+#xdotool getactivewindow windowsize 406 504 windowmove 753 285
 
-GLYPH_PROMPT=" | " GLYPH_COMMAND=" " GLYPH_DESKTOP=" " TERMINAL_COMMAND="termite -e" FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'  --color fg:7,bg:-1,hl:6,fg+:6,bg+:-1,hl+:6 --color info:2,prompt:6,spinner:5,pointer:5,marker:2,header:8 --pointer "― " --border=horizontal --reverse --no-info --header=" "' sway-launcher-desktop
+GLYPH_PROMPT=" | " GLYPH_COMMAND=" " GLYPH_DESKTOP=" " TERMINAL_COMMAND="urxvtdc -e" FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'  --color fg:7,bg:-1,hl:6,fg+:6,bg+:-1,hl+:6 --color info:2,prompt:6,spinner:5,pointer:5,marker:2,header:8 --pointer "― " --border=horizontal --reverse --no-info --header=" "' sway-launcher-desktop

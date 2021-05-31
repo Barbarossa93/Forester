@@ -1,0 +1,7 @@
+#!/bin/sh
+
+notify-send -u normal -t 3000 ' Screenshot will be taken in 5 seconds'
+sleep 5 && shotgun ~/Pictures/Screenshots/$(date +%s).png
+#maim -q -d 5 ~/Pictures/Screenshots/$(date +%s).png
+notify-send -u normal -t 3000 ' Screenshot taken'
+

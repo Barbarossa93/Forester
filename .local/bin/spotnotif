@@ -1,0 +1,20 @@
+#!/bin/sh
+
+sleep 0.1
+status=$(playerctl status)
+
+if [ "$status" = Playing ]; then
+	info=$(playerctl metadata --format $' Now Playing\n {{ title }} ({{ duration(mpris:length) }})\n {{ artist }}\n {{ album }}')
+	notify-send -t 5000 -u normal -i /tmp/cover.png "$info"	
+	#dunstify -t 5000 -r 7658 -u normal -i /tmp/cover.png "$info"
+elif [ "$status" = Paused ]; then
+	position=$(playerctl position --format "{{ duration(position) }}")
+	duration=$(playerctl metadata --format "{{ duration(mpris:length) }}")
+	formatted=$' Playback Paused\nCurrent Position: '$position'/'$duration''
+	notify-send -t 3000 -u normal "$formatted"
+	#dunstify -t 3000 -r 7658 -u normal "$formatted"
+else
+	notify-send -t 3000 -u normal $'Something else besides play/paused happened.\nUpdate this script fool.'	
+	#dunstify -t 3000 -r 7658 -u normal $'Something else besides play/paused happened.\nUpdate this script fool.'
+fi
+

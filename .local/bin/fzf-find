@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cmd="$(st -n "findFiles" -g 86x50 -e bash -ic "fd --hidden -E 'Public/neat-things/*' | fzf --reverse --border=horizontal --no-info --prompt ' │ ' --pointer '― ' --header=' ' | grep '\S' | tee /tmp/fzf-dir")"
+dir=$(cat /tmp/fzf-dir)
+if [ -n $dir ]; then
+	handlr open "$dir"
+else
+	exit
+fi
+
+#if [[ -d $dir ]]; then
+#	st -e ranger "$dir"
+#elif [[ -f $dir ]]; then
+#	rifle $dir
+#else
+#	exit
+#fi
+
+#urxvt -g 75x50 -name "findFiles" -e zsh -ic "fd --hidden --type file | fzf --reverse --border=horizontal --no-info --header=' ' --prompt ' │ ' --pointer '― ' -e | xargs rifle"
