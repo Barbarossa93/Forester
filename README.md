@@ -30,4 +30,9 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - Login manager: Xinit with [xsecurelock](https://github.com/google/xsecurelock)
 - Colorscheme: [Everforest](https://github.com/sainnhe/everforest)
 
-<img src="https://github.com/Barbarossa93/Forester/blob/main/out.png" alt="img" align="center">
+## Screenshots
+### Day
+<img src="https://raw.githubusercontent.com/Barbarossa93/Forester/main/day.png" alt="img" align="center">
+
+### Night
+<img src="https://raw.githubusercontent.com/Barbarossa93/Forester/main/night.png" alt="img" align="center">
