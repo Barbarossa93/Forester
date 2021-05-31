@@ -1,0 +1,20 @@
+--- src/main.C 2018-10-06 08:33:08.580085731 +0300
++++ src/main.C  2018-10-06 08:33:37.549545455 +0300
+@@ -650,7 +650,7 @@ rxvt_term::window_calc (unsigned int new
+   unsigned int w, h;
+   unsigned int max_width, max_height;
+
+-  szHint.flags = PMinSize | PResizeInc | PBaseSize | PWinGravity;
++  szHint.flags = PMinSize | PBaseSize | PWinGravity;
+   szHint.win_gravity = NorthWestGravity;
+   /* szHint.min_aspect.x = szHint.min_aspect.y = 1; */
+
+@@ -1085,7 +1085,7 @@ rxvt_term::resize_all_windows (unsigned
+     {
+       szHint.flags &= ~(PBaseSize | PResizeInc);
+       XSetWMNormalHints (dpy, parent, &szHint);
+-      szHint.flags |= PBaseSize | PResizeInc;
++      szHint.flags |= PBaseSize;
+     }
+
+   if (!ignoreparent)
