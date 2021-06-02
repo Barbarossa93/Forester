@@ -20,10 +20,10 @@ Old reddit link:https://www.reddit.com/r/unixporn/comments/j4ze1p/bspwm_forester
 - Overlay bars: [Xob](https://github.com/florentc/xob)
 - Bar: [Lemonbar](https://github.com/LemonBoy/bar) ([script](https://github.com/Barbarossa93/Forester/blob/main/.local/bin/bar.sh))
 - Fonts: [spectrum's berry](https://github.com/cmvnd/fonts) for UI, [Cozette](https://github.com/slavfox/Cozette) for terminal icons, [Siji](https://github.com/stark/siji) for bar icons, and Kochi-substitute for CJK
-- Music: [Ncspot](https://github.com/hrkfdn/ncspot) with tmux to show album image (with ueberzug), cava, and [lyrics-in-terminal](https://github.com/Jugran/lyrics-in-terminal)
+- Music: [Ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) with [ncmpcpp-ueberzug](https://github.com/alnj/ncmpcpp-ueberzug) and Mopidy (spotify, mpd, alsamixer,mpris)
 - GTK: Everforest colored version of [Elkowar's phocus/gtk fork](https://github.com/elkowar/gtk)
 -  File Manager: Ranger
-- Chat: Irssi with [bitlbee](https://github.com/bitlbee/bitlbee) server on Raspberry Pi for [slack](https://github.com/dylex/slack-libpurple) and [discord](https://github.com/sm00th/bitlbee-discord)
+- Chat: Weechat with [slack](https://github.com/wee-slack/wee-slack) and [discord](https://github.com/terminal-discord/weechat-discord)
 - Fetch: Neofetch
 - Notifications: My fork of [Dunst](https://github.com/Barbarossa93/dunst)
 - Compositor: Vanilla picom
